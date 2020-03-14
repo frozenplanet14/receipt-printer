@@ -1,0 +1,35 @@
+@import "~@angular/material/theming";
+
+@include mat-core();
+
+$primary: mat-palette($mat-blue-grey, 700);
+$accent: mat-palette($mat-deep-orange, 500, A100, A400);
+$warn: mat-palette($mat-red, 600);
+
+$theme: mat-light-theme($primary, $accent, $warn);
+
+@include angular-material-theme($theme);
+
+.list-item-active {
+  font-weight: bold;
+  color: mat-color($accent, darker) !important;
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}

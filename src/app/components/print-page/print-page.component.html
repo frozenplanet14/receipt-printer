@@ -1,0 +1,7 @@
+<canvas id="canvas" width="512px" height="480px" hidden="true"></canvas>
+<div class="container" style="height: 90vh;" fxLayout="column" fxLayoutAlign="center space-between" fxLayoutGap="64px">
+  <button *ngFor="let opt of printOptions; let i = index" mat-raised-button
+    [color]="i === 2 ? 'warn' : (i === 1 ? 'accent' : 'primary')" (click)="execiutePrint(opt.value)">
+    {{opt.displayName}}
+  </button>
+</div>

@@ -1,0 +1,6 @@
+<json-editor [options]="editorOptions"></json-editor>
+<div fxLayout="row" fxLayoutAlign="end" style="margin: 12px;">
+  <button mat-raised-button color="primary" (click)="onEdit()">
+    {{settingsInLocalStorage ? 'Delete ' : ''}}Save Settings
+  </button>
+</div>
