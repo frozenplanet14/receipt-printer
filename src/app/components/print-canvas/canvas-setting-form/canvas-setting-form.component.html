@@ -1,0 +1,74 @@
+<form *ngIf="setting" class="formwidth" (ngSubmit)="onSubmit()">
+  <div fxLayout="row" fxLayoutAlign="space-around center">
+    <strong fxFlex="10%" class="epson-u-text-align-center epson-rotate-text">Property</strong>
+    <div fxFlex="80%">
+      <p>
+        <mat-form-field style="width: 90%;">
+          <mat-label>URL</mat-label>
+          <input matInput disabled placeholder="http://<URL>/cgi-bin/epos/service.cgi?devid=local_printer&timeout=60000"
+            id="address" [(ngModel)]="setting.address" name="address">
+        </mat-form-field>
+      </p>
+      <table class="full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field>
+              <mat-label>Mode</mat-label>
+              <mat-select [(ngModel)]="setting.mode" name="mode">
+                <mat-option *ngFor="let mode of modes" [value]="mode.value">
+                  {{mode.label}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field>
+              <mat-label>Brightness</mat-label>
+              <input matInput placeholder="1.0" [(ngModel)]="setting.brightness" name="brightness">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field>
+              <mat-label>Halftone (Monochrome)</mat-label>
+              <mat-select [(ngModel)]="setting.halftone" name="halftone">
+                <mat-option *ngFor="let halftone of halftones" [value]="halftone.value">
+                  {{halftone.label}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+      <table class="full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field>
+              <mat-label>Alignment</mat-label>
+              <mat-select [(ngModel)]="setting.align" name="align">
+                <mat-option *ngFor="let align of aligns" [value]="align.value">
+                  {{align.label}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field>
+              <mat-label>Color (Monochrome)</mat-label>
+              <mat-select [(ngModel)]="setting.color" name="color">
+                <mat-option *ngFor="let color of colors" [value]="color.value">
+                  {{color.label}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-checkbox [(ngModel)]="setting.cut" name="cut">Cut Paper</mat-checkbox>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div fxFlex="10%">
+      <button type="submit" mat-fab color="primary">Print</button>
+    </div>
+  </div>
+</form>

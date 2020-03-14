@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
@@ -9,6 +10,11 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatInputModule } from '@angular/material/input';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -22,6 +28,9 @@ import { NavComponent } from './nav/nav.component';
 import { PrinterSettingComponent } from './components/printer-setting/printer-setting.component';
 import { DialogComponent } from './components/dialog/dialog.component';
 import { PrintPageComponent } from './components/print-page/print-page.component';
+import { PrintCanvasComponent } from './components/print-canvas/print-canvas.component';
+import { CanvasSettingFormComponent } from './components/print-canvas/canvas-setting-form/canvas-setting-form.component';
+import { CanvasImageEditFormComponent } from './components/print-canvas/canvas-image-edit-form/canvas-image-edit-form.component';
 
 @NgModule({
   declarations: [
@@ -29,12 +38,21 @@ import { PrintPageComponent } from './components/print-page/print-page.component
     NavComponent,
     PrinterSettingComponent,
     DialogComponent,
-    PrintPageComponent
+    PrintPageComponent,
+    PrintCanvasComponent,
+    CanvasSettingFormComponent,
+    CanvasImageEditFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatCheckboxModule,
+    MatInputModule,
     LayoutModule,
     MatToolbarModule,
     MatButtonModule,
@@ -42,6 +60,7 @@ import { PrintPageComponent } from './components/print-page/print-page.component
     MatIconModule,
     MatListModule,
     MatDialogModule,
+    MatGridListModule,
     FlexLayoutModule,
     NgJsonEditorModule
   ],

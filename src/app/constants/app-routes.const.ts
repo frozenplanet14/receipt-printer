@@ -5,5 +5,8 @@ export const APP_ROUTES = [
   }, {
     label: 'Print Options',
     route: './printOptions'
+  }, {
+    label: 'Canvas Print',
+    route: './canvasPrint'
   }
 ];

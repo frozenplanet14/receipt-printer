@@ -1,0 +1,77 @@
+<mat-grid-list cols="3" rowHeight="500px">
+  <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'lightblue'">
+    <form class="epson-u-width-100">
+      <table cellspacing="6">
+        <tr>
+          <td>
+            <p>Position</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field>
+              <mat-label>X-axis</mat-label>
+              <input matInput placeholder="100" [(ngModel)]="imageForm.x" name="x">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field>
+              <mat-label>Y-axis</mat-label>
+              <input matInput placeholder="0" [(ngModel)]="imageForm.y" name="y">
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Size</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field>
+              <mat-label>Width</mat-label>
+              <input matInput placeholder="100" [(ngModel)]="imageForm.w" name="w">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field>
+              <mat-label>Height</mat-label>
+              <input matInput placeholder="0" [(ngModel)]="imageForm.h" name="h">
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <p>Angle (clockwise rotation with upper-left origin)</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field>
+              <mat-label>Degree(s)</mat-label>
+              <input matInput placeholder="0" [(ngModel)]="imageForm.d" name="d">
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <p>Image File{{filename ? (": " + filename) : ""}}</p>
+            <button mat-button color="warn" (click)="onUpload()">
+              <mat-icon>file_upload</mat-icon>
+              Upload
+            </button>
+            <input type="file" #fileUpload id="fileUpload" name="fileUpload" accept="image/*" style="display:none;" />
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" align="center">
+            <button type="reset" mat-raised-button (click)="onClear()">Reset</button>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </mat-grid-tile>
+  <mat-grid-tile [colspan]="2" [rowspan]="1">
+    <canvas id="canvas" width="360" height="512" #canvas></canvas>
+  </mat-grid-tile>
+</mat-grid-list>
