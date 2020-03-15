@@ -36,7 +36,7 @@ export class CanvasImageEditFormComponent extends BaseCanvasFormClass {
       // console.log(imageFile[0]);
       if (imageFile && imageFile.length) {
         this.file = imageFile[0];
-        this.getBase64(imageFile[0]);
+        this.onApply();
       }
     };
     fileUpload.click();

@@ -34,6 +34,7 @@ import { CanvasImageEditFormComponent } from './components/print-canvas/canvas-i
 import { MenuListComponent } from './nav/menu-list/menu-list.component';
 import { PageHeaderComponent } from './nav/page-header/page-header.component';
 import { CanvasTextEditFormComponent } from './components/print-canvas/canvas-text-edit-form/canvas-text-edit-form.component';
+import { CanvasBarcodeEditFormComponent } from './components/print-canvas/canvas-barcode-edit-form/canvas-barcode-edit-form.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { CanvasTextEditFormComponent } from './components/print-canvas/canvas-te
     CanvasImageEditFormComponent,
     MenuListComponent,
     PageHeaderComponent,
-    CanvasTextEditFormComponent
+    CanvasTextEditFormComponent,
+    CanvasBarcodeEditFormComponent
   ],
   imports: [
     BrowserModule,

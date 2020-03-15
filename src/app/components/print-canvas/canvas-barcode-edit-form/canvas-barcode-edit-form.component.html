@@ -1,0 +1,58 @@
+<form class="epson-u-width-100" (ngSubmit)="onApply()">
+  <table cellspacing="6">
+    <tr>
+      <td>
+        <p>Position</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <mat-form-field>
+          <mat-label>X-axis</mat-label>
+          <input matInput placeholder="5" [(ngModel)]="barCodeForm.x" name="x">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field>
+          <mat-label>Y-axis</mat-label>
+          <input matInput placeholder="175" [(ngModel)]="barCodeForm.y" name="y">
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Module Size</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <mat-form-field>
+          <mat-label>Width</mat-label>
+          <input matInput placeholder="3" [(ngModel)]="barCodeForm.w" name="w">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field>
+          <mat-label>Height</mat-label>
+          <input matInput placeholder="162" [(ngModel)]="barCodeForm.h" name="h">
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <mat-form-field>
+          <mat-label>EAN13(JAN13) Data</mat-label>
+          <input matInput placeholder="201234567890" [(ngModel)]="barCodeForm.data" name="data">
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td align="right">
+        <button type="reset" mat-raised-button (click)="onClear()">Reset</button>
+      </td>
+      <td>
+        <button type="submit" mat-raised-button color="primary">Apply</button>
+      </td>
+    </tr>
+  </table>
+</form>

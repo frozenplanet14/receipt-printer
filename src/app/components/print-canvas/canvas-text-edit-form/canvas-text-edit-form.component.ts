@@ -16,7 +16,7 @@ export class CanvasTextEditFormComponent extends BaseCanvasFormClass {
     super();
   }
 
-  drawText() {
+  drawCanvas() {
     const { bold, italic, caps, size, font, textalign, textbase, x, y, text, line } = this.textForm;
     this.context.font =
       (italic ? 'italic ' : 'normal ') + (caps ? 'small-caps ' : 'normal ') +
@@ -24,10 +24,6 @@ export class CanvasTextEditFormComponent extends BaseCanvasFormClass {
     this.context.textAlign = textalign as CanvasTextAlign;
     this.context.textBaseline = textbase as CanvasTextBaseline;
     this.context.fillText(text, Number(x), Number(y) + Number(line));
-  }
-
-  onApply() {
-    this.drawText();
   }
 
 }

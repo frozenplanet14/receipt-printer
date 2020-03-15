@@ -18,6 +18,10 @@ export const APP_ROUTES: RouteLinkModel[] = [
       {
         displayName: 'Text',
         route: 'canvas/text',
+      },
+      {
+        displayName: 'Bar Code',
+        route: 'canvas/barcode',
       }
     ]
   }
