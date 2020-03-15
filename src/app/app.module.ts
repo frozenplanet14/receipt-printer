@@ -15,6 +15,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatInputModule } from '@angular/material/input';
+import { MatRadioModule } from '@angular/material/radio';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -36,6 +37,7 @@ import { PageHeaderComponent } from './nav/page-header/page-header.component';
 import { CanvasTextEditFormComponent } from './components/print-canvas/canvas-text-edit-form/canvas-text-edit-form.component';
 import { CanvasBarcodeEditFormComponent } from './components/print-canvas/canvas-barcode-edit-form/canvas-barcode-edit-form.component';
 import { CanvasGraphEditFormComponent } from './components/print-canvas/canvas-graph-edit-form/canvas-graph-edit-form.component';
+import { CanvasHandDrawingFormComponent } from './components/print-canvas/canvas-hand-drawing-form/canvas-hand-drawing-form.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +53,8 @@ import { CanvasGraphEditFormComponent } from './components/print-canvas/canvas-g
     PageHeaderComponent,
     CanvasTextEditFormComponent,
     CanvasBarcodeEditFormComponent,
-    CanvasGraphEditFormComponent
+    CanvasGraphEditFormComponent,
+    CanvasHandDrawingFormComponent
   ],
   imports: [
     BrowserModule,
@@ -63,6 +66,7 @@ import { CanvasGraphEditFormComponent } from './components/print-canvas/canvas-g
     MatSelectModule,
     MatCheckboxModule,
     MatInputModule,
+    MatRadioModule,
     LayoutModule,
     MatToolbarModule,
     MatButtonModule,

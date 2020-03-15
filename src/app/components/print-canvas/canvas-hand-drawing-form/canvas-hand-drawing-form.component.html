@@ -1,0 +1,19 @@
+<form class="epson-u-width-100">
+  <table cellspacing="6">
+    <tr>
+      <td colspan="2">
+        <p>Pen</p>
+        <mat-radio-group [(ngModel)]="pen" name="pen" (change)="drawCanvas()">
+          <mat-radio-button *ngFor="let width of penWidths" [value]="width.value">
+            {{width.label}}
+          </mat-radio-button>
+        </mat-radio-group>
+      </td>
+    </tr>
+    <tr>
+      <td align="center">
+        <button type="button" mat-raised-button (click)="onClear()">Reset</button>
+      </td>
+    </tr>
+  </table>
+</form>

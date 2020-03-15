@@ -43,7 +43,7 @@ export class MenuListComponent implements OnInit {
 
   onItemSelected(item: RouteLinkModel) {
     if (!item.children || !item.children.length) {
-      this.router.navigate([item.route]);
+      this.router.navigate([item.route], { state: { title: item.displayName } });
       this.navService.closeNav();
     }
     if (item.children && item.children.length) {

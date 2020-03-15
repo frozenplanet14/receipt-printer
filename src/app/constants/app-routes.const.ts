@@ -26,6 +26,10 @@ export const APP_ROUTES: RouteLinkModel[] = [
       {
         displayName: 'Graph',
         route: 'canvas/graph',
+      },
+      {
+        displayName: 'Handwriting',
+        route: 'canvas/handwriting'
       }
     ]
   }

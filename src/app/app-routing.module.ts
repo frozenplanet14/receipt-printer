@@ -7,6 +7,7 @@ import { CanvasImageEditFormComponent } from './components/print-canvas/canvas-i
 import { CanvasTextEditFormComponent } from './components/print-canvas/canvas-text-edit-form/canvas-text-edit-form.component';
 import { CanvasBarcodeEditFormComponent } from './components/print-canvas/canvas-barcode-edit-form/canvas-barcode-edit-form.component';
 import { CanvasGraphEditFormComponent } from './components/print-canvas/canvas-graph-edit-form/canvas-graph-edit-form.component';
+import { CanvasHandDrawingFormComponent } from './components/print-canvas/canvas-hand-drawing-form/canvas-hand-drawing-form.component';
 
 
 const routes: Routes = [
@@ -14,10 +15,11 @@ const routes: Routes = [
   { path: 'printOptions', component: PrintPageComponent },
   {
     path: 'canvas', component: PrintCanvasComponent, children: [
-      { path: 'image', component: CanvasImageEditFormComponent, data: { id: 'image' } },
-      { path: 'text', component: CanvasTextEditFormComponent, data: { id: 'text' } },
-      { path: 'barcode', component: CanvasBarcodeEditFormComponent, data: { id: 'bar code' } },
-      { path: 'graph', component: CanvasGraphEditFormComponent, data: { id: 'graph' } }
+      { path: 'image', component: CanvasImageEditFormComponent },
+      { path: 'text', component: CanvasTextEditFormComponent },
+      { path: 'barcode', component: CanvasBarcodeEditFormComponent },
+      { path: 'graph', component: CanvasGraphEditFormComponent },
+      { path: 'handwriting', component: CanvasHandDrawingFormComponent }
     ]
   },
   { path: '', redirectTo: '/setting', pathMatch: 'full' },
