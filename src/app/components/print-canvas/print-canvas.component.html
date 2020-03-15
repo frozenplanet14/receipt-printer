@@ -1,18 +1,18 @@
 <div fxLayout="row wrap">
   <div fxFlex="100%">
     <mat-toolbar color="accent">
-      <span class="epson-u-text-align-center epson-u-width-100">Test Print</span>
-    </mat-toolbar>
-  </div>
-  <div fxFlex="100%" style="padding-top: 12px;">
-    <epson-canvas-setting-form [webApiUrl]="webApiUrl" (executePrint)="printCanvas($event)"></epson-canvas-setting-form>
-  </div>
-  <div fxFlex="100%">
-    <mat-toolbar color="primary">
       <span class="epson-u-text-align-center epson-u-width-100">Canvas - Image Editing</span>
     </mat-toolbar>
   </div>
   <div fxFlex="100%">
     <epson-canvas-image-edit-form (shareCanvas)="canvas = $event"></epson-canvas-image-edit-form>
+  </div>
+  <div fxFlex="100%">
+    <mat-toolbar color="primary">
+      <span class="epson-u-text-align-center epson-u-width-100">Test Print</span>
+    </mat-toolbar>
+  </div>
+  <div fxFlex="100%" style="padding-top: 12px;">
+    <epson-canvas-setting-form [webApiUrl]="webApiUrl" (executePrint)="printCanvas($event)"></epson-canvas-setting-form>
   </div>
 </div>
