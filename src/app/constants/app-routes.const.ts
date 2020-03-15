@@ -14,6 +14,10 @@ export const APP_ROUTES: RouteLinkModel[] = [
       {
         displayName: 'Image',
         route: 'canvas/image',
+      },
+      {
+        displayName: 'Text',
+        route: 'canvas/text',
       }
     ]
   }

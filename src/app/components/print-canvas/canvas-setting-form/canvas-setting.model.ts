@@ -4,6 +4,8 @@ export interface LabelValueModel {
   isDefault?: boolean;
 }
 
+export const getDefault = (arr: LabelValueModel[]) => arr.find(x => x.isDefault);
+
 export const MODES: LabelValueModel[] = [
   {
     label: 'Monochrome',
@@ -90,7 +92,6 @@ export class CanvasSettingClass {
     color?: string,
     cut?: boolean
   ) {
-    const getDefault = (arr: LabelValueModel[]) => arr.find(x => x.isDefault);
     this.address = address || '';
     this.mode = mode || getDefault(MODES).value;
     this.brightness = brightness || '1.0';

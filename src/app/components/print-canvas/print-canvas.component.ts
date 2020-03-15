@@ -1,8 +1,9 @@
-import { Component, OnInit, ComponentRef, OnDestroy } from '@angular/core';
+import { Component, OnInit, ComponentRef, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { EpsonPrintingService } from 'src/app/services/epson-printing.service';
 import { CanvasSettingClass } from './canvas-setting-form/canvas-setting.model';
 import { ActivatedRoute, Data } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
+import { BaseCanvasFormClass } from './base-canvas-form.class';
 
 @Component({
   selector: 'epson-print-canvas',
@@ -11,7 +12,8 @@ import { Observable, Subscription } from 'rxjs';
 })
 export class PrintCanvasComponent implements OnInit, OnDestroy {
   webApiUrl: string;
-  canvas: HTMLCanvasElement;
+  @ViewChild('canvas', { static: true }) canvas: ElementRef;
+  context: CanvasRenderingContext2D;
   routeData: Observable<Data>;
   canvasSubscription: Subscription;
 
@@ -24,10 +26,17 @@ export class PrintCanvasComponent implements OnInit, OnDestroy {
     this.routeData = this.activatedRoute.data;
   }
 
-  onActivate(componentReference: any) {
+  onActivate(componentReference: BaseCanvasFormClass) {
     console.log(componentReference);
-    this.canvasSubscription = componentReference.shareCanvas
-      .subscribe((canvas: HTMLCanvasElement) => this.canvas = canvas);
+    this.context = (this.canvas.nativeElement as HTMLCanvasElement).getContext('2d');
+    componentReference.initialize(this.canvas.nativeElement as HTMLCanvasElement, this.context);
+    this.canvasSubscription = componentReference.clearCanvas
+      .subscribe(() => {
+        if (this.context) {
+          // clear canvas
+          this.context.clearRect(0, 0, this.canvas.nativeElement.width, this.canvas.nativeElement.height);
+        }
+      });
   }
 
   printCanvas(imageProp: CanvasSettingClass) {
@@ -39,7 +48,7 @@ export class PrintCanvasComponent implements OnInit, OnDestroy {
     epos.align = epos[align];
     epos.color = epos[color];
     epos.cut = cut;
-    epos.print(this.canvas);
+    epos.print(this.canvas.nativeElement);
   }
 
   ngOnDestroy() {

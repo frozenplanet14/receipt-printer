@@ -7,7 +7,14 @@
   </div>
   <div fxFlex="100%">
     <!-- <epson-canvas-image-edit-form (shareCanvas)="canvas = $event"></epson-canvas-image-edit-form> -->
-    <router-outlet (activate)="onActivate($event)"></router-outlet>
+    <mat-grid-list cols="3" rowHeight="500px">
+      <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'lightblue'">
+        <router-outlet (activate)="onActivate($event)"></router-outlet>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="2" [rowspan]="1">
+        <canvas id="canvas" width="360" height="512" #canvas></canvas>
+      </mat-grid-tile>
+    </mat-grid-list>
   </div>
   <div fxFlex="100%">
     <mat-toolbar color="primary">

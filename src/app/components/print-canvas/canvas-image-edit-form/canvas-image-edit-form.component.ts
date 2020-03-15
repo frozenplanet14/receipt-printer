@@ -1,25 +1,20 @@
 import { Component, ViewChild, ElementRef, Output, EventEmitter, AfterViewInit } from '@angular/core';
 import { CanvasFormClass } from './canvas-form.model';
+import { BaseCanvasFormClass } from '../base-canvas-form.class';
 
 @Component({
   selector: 'epson-canvas-image-edit-form',
   templateUrl: './canvas-image-edit-form.component.html',
   styleUrls: ['./canvas-image-edit-form.component.scss']
 })
-export class CanvasImageEditFormComponent implements AfterViewInit {
-  @Output() shareCanvas = new EventEmitter<HTMLCanvasElement>();
+export class CanvasImageEditFormComponent extends BaseCanvasFormClass {
   imageForm = new CanvasFormClass();
   file: File;
   addtnFileDetail: string;
   @ViewChild('fileUpload', { static: true }) fileUpload: ElementRef;
-  @ViewChild('canvas', { static: true }) canvas: ElementRef;
-  context: CanvasRenderingContext2D;
 
-  constructor() { }
-
-  ngAfterViewInit() {
-    this.shareCanvas.next(this.canvas.nativeElement);
-    this.context = (this.canvas.nativeElement as HTMLCanvasElement).getContext('2d');
+  constructor() {
+    super();
   }
 
   getBase64(file) {
@@ -78,13 +73,10 @@ export class CanvasImageEditFormComponent implements AfterViewInit {
   }
 
   onClear(isForceClear?: boolean) {
-    if (this.context) {
-      if (isForceClear) {
-        this.file = null;
-        this.addtnFileDetail = null;
-      }
-      // clear canvas
-      this.context.clearRect(0, 0, this.canvas.nativeElement.width, this.canvas.nativeElement.height);
+    super.onClear();
+    if (isForceClear) {
+      this.file = null;
+      this.addtnFileDetail = null;
     }
   }
 

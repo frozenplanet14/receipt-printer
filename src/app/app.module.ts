@@ -33,6 +33,7 @@ import { CanvasSettingFormComponent } from './components/print-canvas/canvas-set
 import { CanvasImageEditFormComponent } from './components/print-canvas/canvas-image-edit-form/canvas-image-edit-form.component';
 import { MenuListComponent } from './nav/menu-list/menu-list.component';
 import { PageHeaderComponent } from './nav/page-header/page-header.component';
+import { CanvasTextEditFormComponent } from './components/print-canvas/canvas-text-edit-form/canvas-text-edit-form.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { PageHeaderComponent } from './nav/page-header/page-header.component';
     CanvasSettingFormComponent,
     CanvasImageEditFormComponent,
     MenuListComponent,
-    PageHeaderComponent
+    PageHeaderComponent,
+    CanvasTextEditFormComponent
   ],
   imports: [
     BrowserModule,

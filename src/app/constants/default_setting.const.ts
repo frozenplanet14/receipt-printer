@@ -1,4 +1,3 @@
-import { PAPER_WIDTH } from '../models/paper-width.enum';
 import { PrinterConfigModel } from '../models/Printer-config.model';
 
 export const DEFAULT_PRINTER_SETTING: PrinterConfigModel = {

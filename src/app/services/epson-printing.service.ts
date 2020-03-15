@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { LocalStorageService } from './local-storage.service';
-import { PrinterConfigModel } from '../models/Printer-config.model';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '../components/dialog/dialog.component';
 import { DialogDataModel } from '../models/dialog-data.model';
@@ -14,6 +13,7 @@ declare var epson: any; // quiet down the editor, library is referenced in index
   providedIn: 'root'
 })
 export class EpsonPrintingService {
+  activePos: any;
   // Queue Ticket Sequence Number
   sequence = 1;
 
@@ -51,7 +51,7 @@ export class EpsonPrintingService {
     // create print object
     const url = this.getUrl();
     const epos = isCanvas ? new epson.CanvasPrint(url) : new epson.ePOSPrint(url);
-
+    this.activePos = epos;
     // register callback function
     epos.onreceive = this.onReceive.bind(this);
 
@@ -80,7 +80,7 @@ export class EpsonPrintingService {
     this.closeDialog();
     console.log(res);
     if (!res.success) {
-      this.launchDialog({ title: 'Error', message: 'Print error occured.' });
+      this.launchDialog({ title: 'Error', message: 'Print error occured. ' + this.getStatusText(this.activePos, res.status) });
     }
   }
 
@@ -146,22 +146,22 @@ export class EpsonPrintingService {
     // append ticket number
     builder.addTextAlign(builder.ALIGN_LEFT);
     builder.addTextDouble(true, false).addText('Your Number:');
-    builder.addTextDouble(false, false).addText('\n');
+    builder.addTextDouble(false, false).addText('');
     builder.addFeedUnit(16);
     builder.addTextAlign(builder.ALIGN_CENTER);
     builder.addTextSize(6, 4).addText(num);
-    builder.addTextSize(1, 1).addText('\n');
+    builder.addTextSize(1, 1).addText('');
     builder.addFeedUnit(16);
 
     // append message
     builder.addTextStyle(false, false, true);
-    builder.addText('Please wait until your ticket\n');
-    builder.addText('number is called.\n');
+    builder.addText('Please wait until your ticket');
+    builder.addText('number is called.');
     builder.addTextStyle(false, false, false);
     builder.addFeedUnit(16);
 
     // append date and time
-    builder.addText(now.toDateString() + ' ' + now.toTimeString().slice(0, 8) + '\n');
+    builder.addText(now.toDateString() + ' ' + now.toTimeString().slice(0, 8) + '');
     builder.addFeedUnit(16);
 
     // append barcode
@@ -357,5 +357,73 @@ export class EpsonPrintingService {
 
     // set next item code
     this.code++;
+  }
+
+  // get status text
+  getStatusText(e, status) {
+    if (!e) {
+      return '';
+    }
+    let s = 'Status: ';
+    /* tslint:disable:no-bitwise */
+    if (status & e.ASB_NO_RESPONSE) {
+      s += ' No printer response';
+    }
+    if (status & e.ASB_PRINT_SUCCESS) {
+      s += ' Print complete';
+    }
+    if (status & e.ASB_DRAWER_KICK) {
+      s += ' Status of the drawer kick number 3 connector pin = "H"';
+    }
+    if (status & e.ASB_BATTERY_OFFLINE) {
+      s += ' Offline due to a weak battery (only for supported models)';
+    }
+    if (status & e.ASB_OFF_LINE) {
+      s += ' Offline status';
+    }
+    if (status & e.ASB_COVER_OPEN) {
+      s += ' Cover is open';
+    }
+    if (status & e.ASB_PAPER_FEED) {
+      s += ' Paper feed switch is feeding paper';
+    }
+    if (status & e.ASB_WAIT_ON_LINE) {
+      s += ' Waiting for online recovery';
+    }
+    if (status & e.ASB_PANEL_SWITCH) {
+      s += ' Panel switch is ON';
+    }
+    if (status & e.ASB_MECHANICAL_ERR) {
+      s += ' Mechanical error generated';
+    }
+    if (status & e.ASB_AUTOCUTTER_ERR) {
+      s += ' Auto cutter error generated';
+    }
+    if (status & e.ASB_UNRECOVER_ERR) {
+      s += ' Unrecoverable error generated';
+    }
+    if (status & e.ASB_AUTORECOVER_ERR) {
+      s += ' Auto recovery error generated';
+    }
+    if (status & e.ASB_RECEIPT_NEAR_END) {
+      s += ' No paper in the roll paper near end detector';
+    }
+    if (status & e.ASB_RECEIPT_END) {
+      s += ' No paper in the roll paper end detector';
+    }
+    if (status & e.ASB_BUZZER) {
+      s += ' Sounding the buzzer (only for supported models)';
+    }
+    if (status & e.ASB_WAIT_REMOVE_LABEL) {
+      s += ' Waiting to remove label (only for supported models)';
+    }
+    if (status & e.ASB_NO_LABEL) {
+      s += ' No paper in the label peeling detector (only for supported models)';
+    }
+    if (status & e.ASB_SPOOLER_IS_STOPPED) {
+      s += ' Stop the spooler';
+    }
+    /* tslint:enable:no-bitwise */
+    return s;
   }
 }
