@@ -1,0 +1,94 @@
+<form class="epson-u-width-100">
+  <table cellspacing="6">
+    <tr>
+      <td>
+        <p>Fill Settings</p>
+        <mat-form-field>
+          <mat-label>Style</mat-label>
+          <mat-select [(ngModel)]="graphForm.fill" name="fill">
+            <mat-option *ngFor="let style of fillStyles" [value]="style.value">
+              {{style.label}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Swap Color
+        <button mat-icon-button type="button" (click)="swapColor()">
+          <mat-icon>swap_horizontal_circle</mat-icon>
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <mat-form-field>
+          <mat-label>Color 1</mat-label>
+          <input matInput placeholder="gray" [(ngModel)]="graphForm.col1" name="col1">
+          <mat-hint align="start"><strong>#rrggbb</strong> </mat-hint>
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field>
+          <mat-label>Color 2</mat-label>
+          <input matInput placeholder="white" [(ngModel)]="graphForm.col2" name="col2">
+          <mat-hint align="start"><strong>#rrggbb</strong> </mat-hint>
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <p>Rectangle</p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <mat-form-field style="width: 15%; margin-right: 6px;">
+          <mat-label>X-axis</mat-label>
+          <input matInput placeholder="32" [(ngModel)]="graphForm.rectx" name="rectx">
+        </mat-form-field>
+        <mat-form-field style="width: 15%; margin-right: 6px;">
+          <mat-label>Y-axis</mat-label>
+          <input matInput placeholder="64" [(ngModel)]="graphForm.recty" name="recty">
+        </mat-form-field>
+        <mat-form-field style="width: 15%; margin-right: 6px;">
+          <mat-label>Width</mat-label>
+          <input matInput placeholder="192" [(ngModel)]="graphForm.rectw" name="rectw">
+        </mat-form-field>
+        <mat-form-field style="width: 15%; margin-right: 12px;">
+          <mat-label>Height</mat-label>
+          <input matInput placeholder="192" [(ngModel)]="graphForm.recth" name="recth">
+        </mat-form-field>
+        <button type="button" mat-raised-button color="primary" (click)="drawRect()">Draw</button>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <p>Circle</p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <mat-form-field style="width: 20%; margin-right: 6px;">
+          <mat-label>X-axis</mat-label>
+          <input matInput placeholder="224" [(ngModel)]="graphForm.arcx" name="arcx">
+        </mat-form-field>
+        <mat-form-field style="width: 20%; margin-right: 6px;">
+          <mat-label>Y-axis</mat-label>
+          <input matInput placeholder="256" [(ngModel)]="graphForm.arcy" name="arcy">
+        </mat-form-field>
+        <mat-form-field style="width: 20%; margin-right: 18px;">
+          <mat-label>Radius</mat-label>
+          <input matInput placeholder="96" [(ngModel)]="graphForm.arcr" name="arcr">
+        </mat-form-field>
+        <button type="button" mat-raised-button color="primary" (click)="drawCircle()">Draw</button>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center">
+        <button type="button" mat-raised-button (click)="onClear()">Reset</button>
+      </td>
+    </tr>
+  </table>
+</form>

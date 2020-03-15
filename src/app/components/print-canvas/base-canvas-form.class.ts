@@ -5,9 +5,7 @@ export abstract class BaseCanvasFormClass {
   context: CanvasRenderingContext2D;
   @Output() clearCanvas = new EventEmitter<void>();
 
-  drawCanvas(): void {
-
-  }
+  abstract drawCanvas(value?: string): void;
 
   initialize(canvas: HTMLCanvasElement, context: CanvasRenderingContext2D) {
     this.canvas = canvas;

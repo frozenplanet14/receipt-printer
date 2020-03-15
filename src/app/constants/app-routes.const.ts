@@ -22,6 +22,10 @@ export const APP_ROUTES: RouteLinkModel[] = [
       {
         displayName: 'Bar Code',
         route: 'canvas/barcode',
+      },
+      {
+        displayName: 'Graph',
+        route: 'canvas/graph',
       }
     ]
   }

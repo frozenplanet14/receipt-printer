@@ -22,7 +22,7 @@ export class CanvasImageEditFormComponent extends BaseCanvasFormClass {
     reader.readAsDataURL(file);
     reader.onload = (event) => {
       // console.log(reader.result);
-      this.drawImage(event.target.result as string);
+      this.drawCanvas(event.target.result as string);
     };
     reader.onerror = (error) => {
       console.log('Error: ', error);
@@ -49,7 +49,7 @@ export class CanvasImageEditFormComponent extends BaseCanvasFormClass {
     }
   }
 
-  drawImage(value: string) {
+  drawCanvas(value: string) {
     // load image
     if (!value) {
       return;
