@@ -1,6 +1,6 @@
 <mat-grid-list cols="3" rowHeight="500px">
   <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'lightblue'">
-    <form class="epson-u-width-100">
+    <form class="epson-u-width-100" (ngSubmit)="onApply()">
       <table cellspacing="6">
         <tr>
           <td>
@@ -55,8 +55,8 @@
         </tr>
         <tr>
           <td colspan="2">
-            <p>Image File{{filename ? (": " + filename) : ""}}</p>
-            <button mat-button color="warn" (click)="onUpload()">
+            <p>Image File{{file?.name ? (": " + file?.name + (addtnFileDetail || "")) : ""}}</p>
+            <button type="button" mat-button color="warn" (click)="onUpload()">
               <mat-icon>file_upload</mat-icon>
               Upload
             </button>
@@ -64,8 +64,11 @@
           </td>
         </tr>
         <tr>
-          <td colspan="2" align="center">
+          <td align="right">
             <button type="reset" mat-raised-button (click)="onClear()">Reset</button>
+          </td>
+          <td>
+            <button type="submit" mat-raised-button color="primary" [disabled]="!file">Apply</button>
           </td>
         </tr>
       </table>

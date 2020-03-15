@@ -9,7 +9,8 @@ import { CanvasFormClass } from './canvas-form.model';
 export class CanvasImageEditFormComponent implements AfterViewInit {
   @Output() shareCanvas = new EventEmitter<HTMLCanvasElement>();
   imageForm = new CanvasFormClass();
-  filename: string;
+  file: File;
+  addtnFileDetail: string;
   @ViewChild('fileUpload', { static: true }) fileUpload: ElementRef;
   @ViewChild('canvas', { static: true }) canvas: ElementRef;
   context: CanvasRenderingContext2D;
@@ -39,20 +40,29 @@ export class CanvasImageEditFormComponent implements AfterViewInit {
       const imageFile = fileUpload.files;
       // console.log(imageFile[0]);
       if (imageFile && imageFile.length) {
-        this.filename = imageFile[0].name;
+        this.file = imageFile[0];
         this.getBase64(imageFile[0]);
       }
     };
     fileUpload.click();
   }
 
+  onApply() {
+    if (this.file) {
+      this.getBase64(this.file);
+    }
+  }
+
   drawImage(value: string) {
     // load image
+    if (!value) {
+      return;
+    }
     const image = new Image();
     image.src = value;
     image.onload = () => {
       // show message
-      this.filename += (' Image: Width ' + image.width + 'px, Height ' + image.height + 'px');
+      this.addtnFileDetail = (' Image: Width ' + image.width + 'px, Height ' + image.height + 'px');
       if (this.context) {
         // rotate
         const { x, y, w, h, d } = this.imageForm;
@@ -68,6 +78,8 @@ export class CanvasImageEditFormComponent implements AfterViewInit {
 
   onClear() {
     if (this.context) {
+      this.file = null;
+      this.addtnFileDetail = null;
       // clear canvas
       this.context.clearRect(0, 0, this.canvas.nativeElement.width, this.canvas.nativeElement.height);
     }
