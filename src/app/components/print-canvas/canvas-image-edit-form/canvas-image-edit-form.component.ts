@@ -49,6 +49,7 @@ export class CanvasImageEditFormComponent implements AfterViewInit {
 
   onApply() {
     if (this.file) {
+      this.onClear();
       this.getBase64(this.file);
     }
   }
@@ -76,10 +77,12 @@ export class CanvasImageEditFormComponent implements AfterViewInit {
     };
   }
 
-  onClear() {
+  onClear(isForceClear?: boolean) {
     if (this.context) {
-      this.file = null;
-      this.addtnFileDetail = null;
+      if (isForceClear) {
+        this.file = null;
+        this.addtnFileDetail = null;
+      }
       // clear canvas
       this.context.clearRect(0, 0, this.canvas.nativeElement.width, this.canvas.nativeElement.height);
     }

@@ -1,12 +1,20 @@
-export const APP_ROUTES = [
+import { RouteLinkModel } from '../models/route-link.model';
+
+export const APP_ROUTES: RouteLinkModel[] = [
   {
-    label: 'Printer Setting',
-    route: './setting'
+    displayName: 'Printer Setting',
+    route: 'setting'
   }, {
-    label: 'Print Options',
-    route: './printOptions'
+    displayName: 'Print Options',
+    route: 'printOptions'
   }, {
-    label: 'Canvas Print',
-    route: './canvasPrint'
+    displayName: 'Canvas Print',
+    route: 'canvas',
+    children: [
+      {
+        displayName: 'Image',
+        route: 'canvas/image',
+      }
+    ]
   }
 ];

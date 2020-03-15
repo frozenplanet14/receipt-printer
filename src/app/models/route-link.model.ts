@@ -1,4 +1,7 @@
 export interface RouteLinkModel {
-  label: string;
-  route: string;
+  displayName: string;
+  disabled?: boolean;
+  iconName?: string;
+  route?: string;
+  children?: RouteLinkModel[];
 }

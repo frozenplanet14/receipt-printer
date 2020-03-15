@@ -1,0 +1,30 @@
+@import "../theme";
+
+:host {
+  display: flex;
+  flex-direction: column;
+  outline: none;
+  width: 100%;
+
+  .mat-list-item.active {
+    font-weight: bold;
+    color: mat-color($accent, darker) !important;
+    background: rgba(0, 0, 0, 0.04);
+  }
+  &:hover,
+  &:focus {
+    > .mat-list-item:not(.expanded) {
+      background-color: mat-color($primary, 100) !important;
+    }
+  }
+}
+
+.mat-list-item {
+  padding: 8px 0;
+  display: flex;
+  width: auto;
+
+  .routeIcon {
+    margin-right: 40px;
+  }
+}

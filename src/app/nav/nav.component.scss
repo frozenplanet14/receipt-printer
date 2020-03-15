@@ -1,20 +1,5 @@
-@import "~@angular/material/theming";
-
-@include mat-core();
-
-$primary: mat-palette($mat-blue-grey, 700);
-$accent: mat-palette($mat-deep-orange, 500, A100, A400);
-$warn: mat-palette($mat-red, 600);
-
-$theme: mat-light-theme($primary, $accent, $warn);
-
-@include angular-material-theme($theme);
-
-.list-item-active {
-  font-weight: bold;
-  color: mat-color($accent, darker) !important;
-  background: rgba(0, 0, 0, 0.04);
-}
+@import "./theme";
+@import "./breakpoints";
 
 .sidenav-container {
   height: 100%;
@@ -32,4 +17,19 @@ $theme: mat-light-theme($primary, $accent, $warn);
   position: sticky;
   top: 0;
   z-index: 1;
+}
+
+@include breakpoint-max(600px) {
+  .fixed-topnav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 100% !important;
+  }
+
+  .mat-drawer-container,
+  .mat-drawer {
+    padding-top: 56px;
+  }
 }

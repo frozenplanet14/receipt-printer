@@ -3,12 +3,17 @@ import { Routes, RouterModule } from '@angular/router';
 import { PrinterSettingComponent } from './components/printer-setting/printer-setting.component';
 import { PrintPageComponent } from './components/print-page/print-page.component';
 import { PrintCanvasComponent } from './components/print-canvas/print-canvas.component';
+import { CanvasImageEditFormComponent } from './components/print-canvas/canvas-image-edit-form/canvas-image-edit-form.component';
 
 
 const routes: Routes = [
   { path: 'setting', component: PrinterSettingComponent },
   { path: 'printOptions', component: PrintPageComponent },
-  { path: 'canvasPrint', component: PrintCanvasComponent },
+  {
+    path: 'canvas', component: PrintCanvasComponent, children: [
+      { path: 'image', component: CanvasImageEditFormComponent, data: { id: 'image' } }
+    ]
+  },
   { path: '', redirectTo: '/setting', pathMatch: 'full' },
   { path: '**', component: PrinterSettingComponent }
 ];

@@ -1,21 +1,18 @@
+<epson-page-header class="fixed-topnav" fxHide.gt-xs></epson-page-header>
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a *ngFor="let link of routerLinks" mat-list-item [routerLink]="[link.route]" routerLinkActive="list-item-active">
+      <!-- https://stackblitz.com/edit/dynamic-nested-sidenav-menu -->
+      <epson-menu-list *ngFor="let item of routerLinks" [item]="item"></epson-menu-list>
+      <!-- <a *ngFor="let link of routerLinks" mat-list-item [routerLink]="[link.route]" routerLinkActive="list-item-active">
         {{link.label}}
-      </a>
+      </a> -->
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
-      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async">
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-      </button>
-      <span>Receipt Printer</span>
-    </mat-toolbar>
+    <epson-page-header fxHide.xs></epson-page-header>
     <!-- Add Content Here -->
     <router-outlet></router-outlet>
   </mat-sidenav-content>

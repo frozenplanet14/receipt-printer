@@ -1,11 +1,13 @@
 <div fxLayout="row wrap">
   <div fxFlex="100%">
     <mat-toolbar color="accent">
-      <span class="epson-u-text-align-center epson-u-width-100">Canvas - Image Editing</span>
+      <span class="epson-u-text-align-center epson-u-width-100">Canvas - {{(routeData | async)?.id}}
+        Editing</span>
     </mat-toolbar>
   </div>
   <div fxFlex="100%">
-    <epson-canvas-image-edit-form (shareCanvas)="canvas = $event"></epson-canvas-image-edit-form>
+    <!-- <epson-canvas-image-edit-form (shareCanvas)="canvas = $event"></epson-canvas-image-edit-form> -->
+    <router-outlet (activate)="onActivate($event)"></router-outlet>
   </div>
   <div fxFlex="100%">
     <mat-toolbar color="primary">
