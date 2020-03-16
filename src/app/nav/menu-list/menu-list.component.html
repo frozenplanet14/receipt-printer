@@ -3,12 +3,10 @@
   class="menu-list-item">
   <mat-icon *ngIf="item?.iconName" class="routeIcon">{{item.iconName}}</mat-icon>
   {{item.displayName}}
-  <span fxFlex *ngIf="item.children && item.children.length">
-    <span fxFlex></span>
-    <mat-icon [@indicatorRotate]="expanded ? 'expanded': 'collapsed'">
-      expand_more
-    </mat-icon>
-  </span>
+  <span fxFlex></span>
+  <mat-icon *ngIf="item?.children?.length" [@indicatorRotate]="expanded ? 'expanded': 'collapsed'">
+    expand_more
+  </mat-icon>
 </a>
 <div *ngIf="expanded">
   <epson-menu-list *ngFor="let child of item.children" [item]="child" [depth]="depth+1">
