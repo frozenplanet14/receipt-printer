@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { EpsonPrintingService } from 'src/app/services/epson-printing.service';
 import { CanvasSettingClass } from './canvas-setting-form/canvas-setting.model';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { BaseCanvasFormClass } from './base-canvas-form.class';
 

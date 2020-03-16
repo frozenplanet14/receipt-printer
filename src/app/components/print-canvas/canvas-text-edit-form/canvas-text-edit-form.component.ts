@@ -5,7 +5,7 @@ import { BaseCanvasFormClass } from '../base-canvas-form.class';
 @Component({
   selector: 'epson-canvas-text-edit-form',
   templateUrl: './canvas-text-edit-form.component.html',
-  styleUrls: ['./canvas-text-edit-form.component.scss']
+  styleUrls: ['./canvas-text-edit-form.component.scss', '../print-canvas.component.scss']
 })
 export class CanvasTextEditFormComponent extends BaseCanvasFormClass {
   textForm = new CanvasTextFormClass();

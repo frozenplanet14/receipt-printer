@@ -5,7 +5,7 @@ import { BaseCanvasFormClass } from '../base-canvas-form.class';
 @Component({
   selector: 'epson-canvas-image-edit-form',
   templateUrl: './canvas-image-edit-form.component.html',
-  styleUrls: ['./canvas-image-edit-form.component.scss']
+  styleUrls: ['./canvas-image-edit-form.component.scss', '../print-canvas.component.scss']
 })
 export class CanvasImageEditFormComponent extends BaseCanvasFormClass {
   imageForm = new CanvasFormClass();

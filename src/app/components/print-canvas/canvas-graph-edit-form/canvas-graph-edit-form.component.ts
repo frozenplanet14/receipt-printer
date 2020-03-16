@@ -5,7 +5,7 @@ import { CanvasGraphFormClass, FILL_STYLES } from './canvas-graph-form.model';
 @Component({
   selector: 'epson-canvas-graph-edit-form',
   templateUrl: './canvas-graph-edit-form.component.html',
-  styleUrls: ['./canvas-graph-edit-form.component.scss']
+  styleUrls: ['./canvas-graph-edit-form.component.scss', '../print-canvas.component.scss']
 })
 export class CanvasGraphEditFormComponent extends BaseCanvasFormClass {
   graphForm = new CanvasGraphFormClass();

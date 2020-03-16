@@ -8,6 +8,7 @@ import { CanvasTextEditFormComponent } from './components/print-canvas/canvas-te
 import { CanvasBarcodeEditFormComponent } from './components/print-canvas/canvas-barcode-edit-form/canvas-barcode-edit-form.component';
 import { CanvasGraphEditFormComponent } from './components/print-canvas/canvas-graph-edit-form/canvas-graph-edit-form.component';
 import { CanvasHandDrawingFormComponent } from './components/print-canvas/canvas-hand-drawing-form/canvas-hand-drawing-form.component';
+import { CanvasLabelFormComponent } from './components/print-canvas/canvas-label-form/canvas-label-form.component';
 
 
 const routes: Routes = [
@@ -19,7 +20,8 @@ const routes: Routes = [
       { path: 'text', component: CanvasTextEditFormComponent },
       { path: 'barcode', component: CanvasBarcodeEditFormComponent },
       { path: 'graph', component: CanvasGraphEditFormComponent },
-      { path: 'handwriting', component: CanvasHandDrawingFormComponent }
+      { path: 'handwriting', component: CanvasHandDrawingFormComponent },
+      { path: 'label', component: CanvasLabelFormComponent }
     ]
   },
   { path: '', redirectTo: '/setting', pathMatch: 'full' },

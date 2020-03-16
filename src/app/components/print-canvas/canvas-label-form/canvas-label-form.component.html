@@ -1,0 +1,22 @@
+<form class="epson-u-width-100" (ngSubmit)="onApply()">
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input matInput placeholder="Name" [(ngModel)]="labelForm.name" name="name">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Description</mat-label>
+    <input matInput placeholder="Description" [(ngModel)]="labelForm.desc" name="desc">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Code</mat-label>
+    <input matInput placeholder="201234567890" [(ngModel)]="labelForm.code" name="code">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Price</mat-label>
+    <input matInput placeholder="€19.80" [(ngModel)]="labelForm.price" name="price">
+  </mat-form-field>
+  <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="12px">
+    <button type="button" mat-raised-button (click)="onClear()">Clear</button>
+    <button type="submit" mat-raised-button color="primary">Apply</button>
+  </div>
+</form>

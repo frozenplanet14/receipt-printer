@@ -6,7 +6,7 @@ import { drawEan13 } from 'src/app/functions/draw-ean13.function';
 @Component({
   selector: 'epson-canvas-barcode-edit-form',
   templateUrl: './canvas-barcode-edit-form.component.html',
-  styleUrls: ['./canvas-barcode-edit-form.component.scss']
+  styleUrls: ['./canvas-barcode-edit-form.component.scss', '../print-canvas.component.scss']
 })
 export class CanvasBarcodeEditFormComponent extends BaseCanvasFormClass {
   barCodeForm = new CanvasBarcodeFormClass();
