@@ -31,8 +31,9 @@ import {
   RESET_FORM_ITEM,
   COMMAND_FORM_ITEM
 } from './others-section.const';
+import { EditMenuModel } from '../../../model/form-model';
 
-export const EDIT_MENU_FORM = [
+export const EDIT_MENU_FORM: EditMenuModel[] = [
   {
     legend: 'Common',
     items: [

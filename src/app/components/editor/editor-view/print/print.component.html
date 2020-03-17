@@ -2,15 +2,11 @@
   <p>
     <mat-form-field class="epson-u-width-100">
       <mat-label>Data to be sent (ePOS-Print XML)</mat-label>
-      <textarea matInput minRows="12" [(ngModel)]="printForm.doc" name="doc"></textarea>
+      <textarea matInput minRows="12" cols="30" rows="8" [(ngModel)]="printForm.doc" name="doc"></textarea>
     </mat-form-field>
-    <button type="button" mat-raised-button>Send</button>
+    <button type="button" mat-raised-button (click)="sendPrintDoc()">Send</button>
   </p>
-  <p>
-    <mat-form-field class="epson-u-width-100">
-      <mat-label>Information</mat-label>
-      <textarea matInput minRows="10" [(ngModel)]="printForm.info" name="info"></textarea>
-    </mat-form-field>
-    <button type="button" mat-raised-button>Clear</button>
-  </p>
+  <h3>Information</h3>
+  <pre>{{printForm.info}}</pre>
+  <button type="button" mat-raised-button (click)="printForm.info = ''">Clear</button>
 </div>

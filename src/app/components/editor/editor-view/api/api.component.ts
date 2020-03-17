@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DocumentService } from '../../services/document.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'epson-api',
@@ -6,10 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./api.component.scss']
 })
 export class ApiComponent implements OnInit {
-  code: string;
-  constructor() { }
+  code: Observable<string>;
+
+  constructor(private docService: DocumentService) { }
 
   ngOnInit(): void {
+    this.code = this.docService.api;
   }
 
 }

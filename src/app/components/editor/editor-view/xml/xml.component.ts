@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DocumentService } from '../../services/document.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'epson-xml',
@@ -6,10 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./xml.component.scss']
 })
 export class XmlComponent implements OnInit {
-  doc: string;
-  constructor() { }
+  doc: Observable<string>;
+
+  constructor(private docService: DocumentService) { }
 
   ngOnInit(): void {
+    this.doc = this.docService.xml;
   }
 
 }

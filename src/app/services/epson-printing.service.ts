@@ -6,6 +6,7 @@ import { DialogDataModel } from '../models/dialog-data.model';
 import { CanvasMeasureModel } from '../models/canvas-measure.model';
 import { drawEan13 } from '../functions/draw-ean13.function';
 import { PrintOptionType } from '../constants/print-option.const';
+import { SettingClass } from '../components/editor/editor-view/setting/setting.model';
 
 declare var epson: any; // quiet down the editor, library is referenced in index.html
 
@@ -46,6 +47,8 @@ export class EpsonPrintingService {
     const { ipAddress, deviceId, timeout } = this.localStore.getCurrentSetting();
     return 'http://' + ipAddress + '/cgi-bin/epos/service.cgi?devid=' + deviceId + '&timeout=' + timeout;
   }
+
+  getExtraSetting = (): SettingClass => this.localStore.getExtraSetting();
 
   printCommand = (isCanvas?: boolean) => {
     // create print object
