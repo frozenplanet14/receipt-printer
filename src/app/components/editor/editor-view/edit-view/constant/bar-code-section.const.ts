@@ -1,6 +1,6 @@
-import { FORM_TYPE_INPUT, FORM_TYPE_SELECT, FORM_TYPE_SLIDER } from './form-type.const';
 import { LabelValueModel } from '../../../../print-canvas/canvas-setting-form/canvas-setting.model';
 import { FONTS } from './printer-font.const';
+import { FORM_TYPE_CONST } from './form-type.const';
 
 export const BAR_CODE_TYPE_CONST: LabelValueModel[] = [
   { label: 'UPC-A', value: 'BARCODE_UPC_A' },
@@ -34,31 +34,43 @@ export const BARCODE_FORM_ITEM = {
   alt_text: 'barcode',
   hasDelete: true,
   form: [{
-    type: FORM_TYPE_INPUT,
+    id: 'attr-barcode-data',
+    type: FORM_TYPE_CONST.FORM_TYPE_INPUT,
     label: 'Data',
     value: '12345'
   }, {
-    type: FORM_TYPE_SELECT,
+    id: 'attr-barcode-type',
+    type: FORM_TYPE_CONST.FORM_TYPE_SELECT,
     label: 'Type',
     options: BAR_CODE_TYPE_CONST
   }, {
-    type: FORM_TYPE_SELECT,
+    id: 'attr-barcode-hri',
+    type: FORM_TYPE_CONST.FORM_TYPE_SELECT,
     label: 'HRI',
     options: HRI_CONST
   }, {
-    type: FORM_TYPE_SELECT,
+    id: 'attr-barcode-font',
+    type: FORM_TYPE_CONST.FORM_TYPE_SELECT,
     label: 'Font',
     options: FONTS
   }, {
-    type: FORM_TYPE_SLIDER,
+    id: 'attr-barcode-width',
+    type: FORM_TYPE_CONST.FORM_TYPE_SLIDER,
     label: 'Module Width',
     suffix: 'dots',
-    value: 2
+    value: 2,
+    min: 2,
+    max: 6,
+    step: 1
   }, {
-    type: FORM_TYPE_SLIDER,
+    id: 'attr-barcode-height',
+    type: FORM_TYPE_CONST.FORM_TYPE_SLIDER,
     label: 'Module Height',
     suffix: 'dots',
-    value: 32
+    value: 32,
+    min: 1,
+    max: 255,
+    step: 1
   }]
 };
 
@@ -107,36 +119,55 @@ export const SYMBOL_FORM_ITEM = {
   alt_text: 'symbol',
   hasDelete: true,
   form: [{
-    type: FORM_TYPE_INPUT,
+    id: 'attr-symbol-data',
+    type: FORM_TYPE_CONST.FORM_TYPE_INPUT,
     label: 'Data',
     value: 'http://www.epson.com/',
     hint: `Hexadecimal: '\x00'-'\xff', Horizontal Tab(HT): '\t', Line Feed(LF): '\n', Carriage Return(CR): '\r', Back Slash: '\\'`
   }, {
-    type: FORM_TYPE_SELECT,
+    id: 'attr-symbol-type',
+    type: FORM_TYPE_CONST.FORM_TYPE_SELECT,
     label: 'Type',
     options: SYMBOL_TYPE_CONST
   }, {
-    type: FORM_TYPE_SELECT,
+    id: 'attr-symbol-level-enum',
+    type: FORM_TYPE_CONST.FORM_TYPE_SELECT,
     label: 'Error Correction Level',
     options: ERROR_CORRECTION_LEVEL_CONST
   }, {
-    type: FORM_TYPE_SLIDER,
+    id: 'attr-symbol-level',
+    type: FORM_TYPE_CONST.FORM_TYPE_SLIDER,
     label: 'Error Correction Level (Aztec Code)',
-    value: 23
+    value: 23,
+    min: 5,
+    max: 95,
+    step: 1
   }, {
-    type: FORM_TYPE_SLIDER,
+    id: 'attr-symbol-width',
+    type: FORM_TYPE_CONST.FORM_TYPE_SLIDER,
     label: 'Module Width',
     suffix: 'dots',
-    value: 3
+    value: 3,
+    min: 0,
+    max: 16,
+    step: 1
   }, {
-    type: FORM_TYPE_SLIDER,
+    id: 'attr-symbol-height',
+    type: FORM_TYPE_CONST.FORM_TYPE_SLIDER,
     label: 'Module Height (PDF417)',
     suffix: 'times',
-    value: 0
+    value: 0,
+    min: 0,
+    max: 8,
+    step: 1
   }, {
-    type: FORM_TYPE_SLIDER,
+    id: 'attr-symbol-size',
+    type: FORM_TYPE_CONST.FORM_TYPE_SLIDER,
     label: 'Symbol Size (PDF417, GS1 DataBar)',
     suffix: 'columns, dots',
-    value: 0
+    value: 0,
+    min: 0,
+    max: 2400,
+    step: 1
   }]
 };

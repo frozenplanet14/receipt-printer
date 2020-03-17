@@ -1,5 +1,6 @@
 import { LabelValueModel } from '../../../../print-canvas/canvas-setting-form/canvas-setting.model';
-import { FORM_TYPE_SELECT, FORM_TYPE_SLIDER, FORM_TYPE_CHECK_BOX } from './form-type.const';
+import { FORM_TYPE_CONST } from './form-type.const';
+
 
 export const ALIGNMENT: LabelValueModel[] = [{
   label: 'Left',
@@ -21,7 +22,8 @@ export const ALIGNMENT_FORM_ITEM = {
   alt_text: 'text-align',
   hasDelete: true,
   form: [{
-    type: FORM_TYPE_SELECT,
+    id: 'attr-text-align',
+    type: FORM_TYPE_CONST.FORM_TYPE_SELECT,
     label: 'Alignment',
     options: ALIGNMENT
   }]
@@ -32,10 +34,14 @@ export const LINE_SPEC_FORM_ITEM = {
   alt_text: 'text-linespc',
   hasDelete: true,
   form: [{
-    type: FORM_TYPE_SLIDER,
+    id: 'attr-text-linespc',
+    type: FORM_TYPE_CONST.FORM_TYPE_SLIDER,
     label: 'Line Spacing',
     suffix: 'dots',
-    value: 30
+    value: 30,
+    min: 0,
+    max: 255,
+    step: 1
   }]
 };
 export const ROTATE_FORM_ITEM = {
@@ -44,7 +50,8 @@ export const ROTATE_FORM_ITEM = {
   alt_text: 'text-rotate',
   hasDelete: true,
   form: [{
-    type: FORM_TYPE_CHECK_BOX,
+    id: 'attr-text-rotate',
+    type: FORM_TYPE_CONST.FORM_TYPE_CHECK_BOX,
     label: 'Upside-down',
     value: true
   }]

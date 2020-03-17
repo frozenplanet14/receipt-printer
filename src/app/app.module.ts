@@ -18,6 +18,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatSliderModule } from '@angular/material/slider';
 import { MatCardModule } from '@angular/material/card';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -49,6 +50,7 @@ import { ApiComponent } from './components/editor/editor-view/api/api.component'
 import { XmlComponent } from './components/editor/editor-view/xml/xml.component';
 import { PrintComponent } from './components/editor/editor-view/print/print.component';
 import { SettingComponent } from './components/editor/editor-view/setting/setting.component';
+import { ImportDataComponent } from './components/editor/editor-view/import-data/import-data.component';
 
 @NgModule({
   declarations: [
@@ -73,7 +75,8 @@ import { SettingComponent } from './components/editor/editor-view/setting/settin
     ApiComponent,
     XmlComponent,
     PrintComponent,
-    SettingComponent
+    SettingComponent,
+    ImportDataComponent
   ],
   imports: [
     BrowserModule,
@@ -86,6 +89,7 @@ import { SettingComponent } from './components/editor/editor-view/setting/settin
     MatCheckboxModule,
     MatInputModule,
     MatRadioModule,
+    MatSliderModule,
     LayoutModule,
     DragDropModule,
     MatToolbarModule,

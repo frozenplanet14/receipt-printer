@@ -1,5 +1,5 @@
-import { FORM_TYPE_SELECT, FORM_TYPE_SLIDER, FORM_TYPE_INPUT } from './form-type.const';
 import { LabelValueModel } from 'src/app/components/print-canvas/canvas-setting-form/canvas-setting.model';
+import { FORM_TYPE_CONST } from './form-type.const';
 
 export const PAPER_CUT_TYPE: LabelValueModel[] = [
   { label: 'No Feed', value: 'CUT_NO_FEED' },
@@ -13,7 +13,8 @@ export const PAPER_CUT_FORM_ITEM = {
   alt_text: 'cut',
   hasDelete: true,
   form: [{
-    type: FORM_TYPE_SELECT,
+    id: 'attr-cut-type',
+    type: FORM_TYPE_CONST.FORM_TYPE_SELECT,
     label: 'Type',
     options: PAPER_CUT_TYPE
   }]
@@ -38,11 +39,13 @@ export const CONNECTOR_FORM_ITEM = {
   alt_text: 'pulse',
   hasDelete: true,
   form: [{
-    type: FORM_TYPE_SELECT,
+    id: 'attr-pulse-drawer',
+    type: FORM_TYPE_CONST.FORM_TYPE_SELECT,
     label: 'Connector',
     options: CONNECTOR_CONST
   }, {
-    type: FORM_TYPE_SELECT,
+    id: 'attr-pulse-time',
+    type: FORM_TYPE_CONST.FORM_TYPE_SELECT,
     label: 'ON Time',
     options: PULSE_CONST
   }]
@@ -76,18 +79,27 @@ export const PATTERN_FORM_ITEM = {
   hasDelete: true,
   hint: 'TM-T88V, TM-P60II, TM-P80, TM-P20',
   form: [{
-    type: FORM_TYPE_SELECT,
+    id: 'attr-sound-pattern',
+    type: FORM_TYPE_CONST.FORM_TYPE_SELECT,
     label: 'Pattern',
     options: PATTERN_CONST
   }, {
-    type: FORM_TYPE_SLIDER,
+    id: 'attr-sound-repeat',
+    type: FORM_TYPE_CONST.FORM_TYPE_SLIDER,
     label: 'Repeat',
-    value: 1
+    value: 1,
+    min: 0,
+    max: 255,
+    step: 1
   }, {
-    type: FORM_TYPE_SLIDER,
+    id: 'attr-sound-cycle',
+    type: FORM_TYPE_CONST.FORM_TYPE_SLIDER,
     label: 'Cycle (Pattern 1-10)',
     suffix: 'ms',
-    value: 1000
+    value: 1000,
+    min: 1000,
+    max: 25500,
+    step: 100
   }]
 };
 
@@ -105,40 +117,65 @@ export const LAYOUT_FORM_ITEM = {
   hasDelete: true,
   hint: '[v2.2-] TM-P60II, TM-P80, TM-P20',
   form: [{
-    type: FORM_TYPE_SELECT,
+    id: 'attr-layout-type',
+    type: FORM_TYPE_CONST.FORM_TYPE_SELECT,
     label: 'Paper Type',
     options: RECEIPT_LAYOUT_TYPE_CONST
   }, {
-    type: FORM_TYPE_SLIDER,
+    id: 'attr-layout-width',
+    type: FORM_TYPE_CONST.FORM_TYPE_SLIDER,
     label: 'Paper Width (Liner Width) (sf)',
     suffix: 'mm',
-    value: 58.0
+    value: 58.0,
+    min: 29,
+    max: 80,
+    step: 0.1
   }, {
-    // TODO: ADD RADIO BUTTON FOR AUTOMATIC VS MANUAL
-    type: FORM_TYPE_SLIDER,
+    // TODO: ADD RADIO BUTTON FOR AUTOMATIC VS MANUAL = attr-layout-height-auto
+    id: 'attr-layout-height',
+    type: FORM_TYPE_CONST.FORM_TYPE_SLIDER,
     label: 'Height (sa)',
     suffix: 'mm',
-    value: 28.4
+    value: 28.4,
+    min: 28.4,
+    max: 310,
+    step: 0.1
   }, {
-    type: FORM_TYPE_SLIDER,
+    id: 'attr-layout-margin-top',
+    type: FORM_TYPE_CONST.FORM_TYPE_SLIDER,
     label: 'Top Margin (sb)',
     suffix: 'mm',
-    value: 0.0
+    value: 0.0,
+    min: -15,
+    max: 300,
+    step: 0.1
   }, {
-    type: FORM_TYPE_SLIDER,
+    id: 'attr-layout-margin-bottom',
+    type: FORM_TYPE_CONST.FORM_TYPE_SLIDER,
     label: 'Bottom Margin (se)',
     suffix: 'mm',
-    value: 0.0
+    value: 0.0,
+    min: -1.5,
+    max: 1.5,
+    step: 0.1
   }, {
-    type: FORM_TYPE_SLIDER,
+    id: 'attr-layout-offset-cut',
+    type: FORM_TYPE_CONST.FORM_TYPE_SLIDER,
     label: 'Offset to Cutting Position (sc)',
     suffix: 'mm',
-    value: 0.0
+    value: 0.0,
+    min: -29,
+    max: 5,
+    step: 0.1
   }, {
-    type: FORM_TYPE_SLIDER,
+    id: 'attr-layout-offset-label',
+    type: FORM_TYPE_CONST.FORM_TYPE_SLIDER,
     label: 'Offset to Label Bottom Edge Position (sd)',
     suffix: 'mm',
-    value: 0.0
+    value: 0.0,
+    min: 0,
+    max: 1.5,
+    step: 0.1
   }]
 };
 
@@ -167,7 +204,8 @@ export const COMMAND_FORM_ITEM = {
   hasDelete: true,
   form: [
     {
-      type: FORM_TYPE_INPUT,
+      id: 'attr-command-data',
+      type: FORM_TYPE_CONST.FORM_TYPE_INPUT,
       hint: `Hexadecimal: '\x00'-'\xff', Horizontal Tab(HT): '\t', Line Feed(LF): '\n', Carriage Return(CR): '\r', Back Slash: '\\'`,
       value: `\x1b*\x21\x01\x00\x55\x55\x55\n`
     }

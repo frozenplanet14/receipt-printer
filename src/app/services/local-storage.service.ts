@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { PrinterConfigModel } from '../models/Printer-config.model';
 import { DEFAULT_PRINTER_SETTING } from '../constants/default_setting.const';
+import { SettingClass } from '../components/editor/editor-view/setting/setting.model';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,7 @@ export class LocalStorageService {
    * Name of the settings stored locally to facilitate test harness.
    */
   readonly localStorageName = 'Epson-LocalSettings';
+  readonly extraSetting = 'Epson-ExtraSettings';
 
   constructor() { }
 
@@ -22,19 +24,22 @@ export class LocalStorageService {
    * @param config PrinterConfigModel to save.
    */
   saveInLocalStorage(config: PrinterConfigModel) {
-    if (!config) { return; } // nothing to store
-    localStorage.setItem(this.localStorageName, JSON.stringify(config));
+    this.setItem(this.localStorageName, config);
+  }
+
+  saveExtraInLocalStorage(config: SettingClass) {
+    this.setItem(this.extraSetting, config);
   }
 
   /**
    * Gets a configuration from local browser's storage.
    */
   getConfigFromLocalStorage(): PrinterConfigModel {
-    const configFromLocalStorage = localStorage.getItem(this.localStorageName);
-    if (!configFromLocalStorage) {
-      return null;
-    }
-    return JSON.parse(configFromLocalStorage);
+    return this.getItem(this.localStorageName);
+  }
+
+  getExtraSetting(): SettingClass {
+    return this.getItem(this.extraSetting) || {};
   }
 
   /**
@@ -43,5 +48,18 @@ export class LocalStorageService {
   removeFromLocalStorage() {
     if (!!!this.getConfigFromLocalStorage()) { return; }
     localStorage.removeItem(this.localStorageName);
+  }
+
+  getItem(key: string) {
+    const configFromLocalStorage = localStorage.getItem(key);
+    if (!configFromLocalStorage) {
+      return null;
+    }
+    return JSON.parse(configFromLocalStorage);
+  }
+
+  setItem(key: string, value: any) {
+    if (!value) { return; } // nothing to store
+    localStorage.setItem(key, JSON.stringify(value));
   }
 }

@@ -2,7 +2,7 @@
   flex: 1 1 auto;
 }
 
-.epson-center-button {
+.epson-u-margin-horizontal {
   margin-left: 12px;
   margin-right: 12px;
 }
@@ -33,4 +33,22 @@
 
 .epson-u-margin-1 {
   margin: 12px;
+}
+
+.epson-xml-editor {
+  margin-bottom: 6px;
+}
+
+.epson-internal-card {
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+p {
+  margin: 0;
+}
+
+mat-checkbox,
+mat-form-field {
+  padding-left: 8px;
 }

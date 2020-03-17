@@ -1,5 +1,5 @@
-import { FORM_TYPE_SLIDER, FORM_TYPE_SELECT } from './form-type.const';
 import { LabelValueModel } from 'src/app/components/print-canvas/canvas-setting-form/canvas-setting.model';
+import { FORM_TYPE_CONST } from './form-type.const';
 
 export const PAGE_START_FORM_ITEM = {
   img: 'page-begin.png',
@@ -16,25 +16,38 @@ export const AREA_FORM_ITEM = {
   alt_text: 'area',
   hasDelete: true,
   form: [{
-    type: FORM_TYPE_SLIDER,
+    id: 'attr-area-x',
+    type: FORM_TYPE_CONST.FORM_TYPE_SLIDER,
     label: 'X Origin',
     suffix: 'dots',
     value: 0
   }, {
-    type: FORM_TYPE_SLIDER,
+    id: 'attr-area-y',
+    type: FORM_TYPE_CONST.FORM_TYPE_SLIDER,
     label: 'Y Origin',
     suffix: 'dots',
-    value: 0
+    value: 0,
+    min: 1,
+    max: 2399,
+    step: 1
   }, {
-    type: FORM_TYPE_SLIDER,
+    id: 'attr-area-width',
+    type: FORM_TYPE_CONST.FORM_TYPE_SLIDER,
     label: 'Width',
     suffix: 'dots',
-    value: 100
+    value: 100,
+    min: 1,
+    max: 576,
+    step: 1
   }, {
-    type: FORM_TYPE_SLIDER,
+    id: 'attr-area-height',
+    type: FORM_TYPE_CONST.FORM_TYPE_SLIDER,
     label: 'Height',
     suffix: 'dots',
-    value: 100
+    value: 100,
+    min: 1,
+    max: 2400,
+    step: 1
   }]
 };
 
@@ -51,7 +64,8 @@ export const DIRECTION_FORM_ITEM = {
   alt_text: 'direction',
   hasDelete: true,
   form: [{
-    type: FORM_TYPE_SELECT,
+    id: 'attr-direction-dir',
+    type: FORM_TYPE_CONST.FORM_TYPE_SELECT,
     label: 'Direction',
     options: DIRECTIONS
   }]
@@ -63,15 +77,23 @@ export const POSITION_FORM_ITEM = {
   alt_text: 'position',
   hasDelete: true,
   form: [{
-    type: FORM_TYPE_SLIDER,
+    id: 'attr-position-x',
+    type: FORM_TYPE_CONST.FORM_TYPE_SLIDER,
     label: 'X Position',
     suffix: 'dots',
-    value: 0
+    value: 0,
+    min: 1,
+    max: 2399,
+    step: 1
   }, {
-    type: FORM_TYPE_SLIDER,
+    id: 'attr-position-y',
+    type: FORM_TYPE_CONST.FORM_TYPE_SLIDER,
     label: 'Y Position',
     suffix: 'dots',
-    value: 21
+    value: 21,
+    min: 1,
+    max: 2399,
+    step: 1
   }]
 };
 
@@ -91,27 +113,44 @@ export const LINE_FORM_ITEM = {
   hint: 'TM-P60II, TM-P80, TM-P20',
   hasDelete: true,
   form: [{
-    type: FORM_TYPE_SLIDER,
+    id: 'attr-line-x1',
+    type: FORM_TYPE_CONST.FORM_TYPE_SLIDER,
     label: 'X Start Position',
     suffix: 'dots',
-    value: 0
+    value: 0,
+    min: 1,
+    max: 2399,
+    step: 1
   }, {
-    type: FORM_TYPE_SLIDER,
+    id: 'attr-line-y1',
+    type: FORM_TYPE_CONST.FORM_TYPE_SLIDER,
     label: 'Y Start Position',
     suffix: 'dots',
-    value: 50
+    value: 50,
+    min: 1,
+    max: 2399,
+    step: 1
   }, {
-    type: FORM_TYPE_SLIDER,
+    id: 'attr-line-x2',
+    type: FORM_TYPE_CONST.FORM_TYPE_SLIDER,
     label: 'X End Position',
     suffix: 'dots',
-    value: 99
+    value: 99,
+    min: 1,
+    max: 2399,
+    step: 1
   }, {
-    type: FORM_TYPE_SLIDER,
+    id: 'attr-line-y2',
+    type: FORM_TYPE_CONST.FORM_TYPE_SLIDER,
     label: 'Y End Position',
     suffix: 'dots',
-    value: 50
+    value: 50,
+    min: 1,
+    max: 2399,
+    step: 1
   }, {
-    type: FORM_TYPE_SELECT,
+    id: 'attr-line-style',
+    type: FORM_TYPE_CONST.FORM_TYPE_SELECT,
     label: 'Style',
     options: STYLE_CONST
   }]
@@ -124,27 +163,44 @@ export const RECT_FORM_ITEM = {
   hint: 'TM-P60II, TM-P80, TM-P20',
   hasDelete: true,
   form: [{
-    type: FORM_TYPE_SLIDER,
+    id: 'attr-rectangle-x1',
+    type: FORM_TYPE_CONST.FORM_TYPE_SLIDER,
     label: 'X Start Position',
     suffix: 'dots',
-    value: 0
+    value: 0,
+    min: 1,
+    max: 2399,
+    step: 1
   }, {
-    type: FORM_TYPE_SLIDER,
+    id: 'attr-rectangle-y1',
+    type: FORM_TYPE_CONST.FORM_TYPE_SLIDER,
     label: 'Y Start Position',
     suffix: 'dots',
-    value: 0
+    value: 0,
+    min: 1,
+    max: 2399,
+    step: 1
   }, {
-    type: FORM_TYPE_SLIDER,
+    id: 'attr-rectangle-x2',
+    type: FORM_TYPE_CONST.FORM_TYPE_SLIDER,
     label: 'X End Position',
     suffix: 'dots',
-    value: 99
+    value: 99,
+    min: 1,
+    max: 2399,
+    step: 1
   }, {
-    type: FORM_TYPE_SLIDER,
+    id: 'attr-rectangle-y2',
+    type: FORM_TYPE_CONST.FORM_TYPE_SLIDER,
     label: 'Y End Position',
     suffix: 'dots',
-    value: 99
+    value: 99,
+    min: 1,
+    max: 2399,
+    step: 1
   }, {
-    type: FORM_TYPE_SELECT,
+    id: 'attr-rectangle-style',
+    type: FORM_TYPE_CONST.FORM_TYPE_SELECT,
     label: 'Style',
     options: STYLE_CONST
   }]

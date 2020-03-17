@@ -1,13 +1,14 @@
 <div fxLayout="row">
   <div fxFlex="25">
     <!-- <epson-edit-menu style="width: 85%;"></epson-edit-menu> -->
-    <div cdkDropList cdkDropListSortingDisabled [cdkDropListData]="menuList" style="width: 95%;"
-      [cdkDropListConnectedTo]="['xml-editor']" (cdkDropListDropped)="drop($event)">
+    <div style="width: 95%;">
       <fieldset class="edit-category" *ngFor="let menu of menuList">
         <legend>{{menu.legend}}</legend>
-        <div *ngFor="let row of menu.items; let last = last" class="epson-form-text"
-          [ngClass]="{'epson-u-margin-bottom-1': !last}" fxLayout="row" fxLayoutAlign="space-between center">
-          <div class="edit-caption" *ngFor="let item of row" cdkDrag>
+        <div *ngFor="let row of menu.items; let last = last" cdkDropList cdkDropListSortingDisabled
+          [cdkDropListData]="row" cdkDropListConnectedTo="xml-editor" (cdkDropListDropped)="drop($event)"
+          class="epson-form-text" [ngClass]="{'epson-u-margin-bottom-1': !last}" fxLayout="row"
+          fxLayoutAlign="space-between center">
+          <div class="edit-caption" *ngFor="let item of row" cdkDrag [cdkDragData]="item">
             <img [src]="'./assets/editor/' + item.img" [alt]="item.alt_text" /><br />
             <span>{{item.name}}</span>
           </div>
@@ -17,10 +18,57 @@
   </div>
   <div fxFlex>
     <mat-card class="mat-elevation-z4">
-      <mat-card-content id="xml-editor">
-        <ul class="epson-edit-sequence epson-u-width-100">
-          <li>Editor test</li>
-        </ul>
+      <mat-card-content [formGroup]="group">
+        <div id="xml-editor" class="epson-edit-sequence epson-u-width-100" cdkDropList [cdkDropListData]="canvasItems"
+          (cdkDropListDropped)="drop($event)" formArrayName="items">
+          <mat-card [ngClass]="{'epson-xml-editor': !last}" class="epson-internal-card"
+            *ngFor="let item of canvasItems; let i = index; let last = last" cdkDrag>
+            <div fxLayout="row">
+              <div class="epson-form-text">
+                <img [src]="'./assets/editor/' + item.img" [alt]="item.alt_text" /><br />
+                <span>{{item.name}}</span>
+              </div>
+              <div fxFlex [formGroupName]="i">
+                <p *ngFor="let formItem of item?.form" [ngStyle]="formItem?.inline && {'display': 'inline-block'}">
+                  <!-- SELECT Component -->
+                  <mat-form-field *ngIf="formItem?.type === formTypes.FORM_TYPE_SELECT"
+                    class="epson-u-margin-horizontal">
+                    <mat-label>{{formItem?.label}}</mat-label>
+                    <mat-select [formControlName]="formItem?.id">
+                      <mat-option *ngFor="let opt of formItem?.options" [value]="opt.value">
+                        {{opt.label}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <!-- Slider Component -->
+                  <ng-container *ngIf="formItem?.type === formTypes.FORM_TYPE_SLIDER">
+                    <mat-form-field>
+                      <mat-label>{{formItem?.label}}</mat-label>
+                      <input matInput [formControlName]="formItem?.id">
+                      <span matSuffix>&nbsp;{{formItem?.suffix}}</span>
+                    </mat-form-field><br />
+                    <mat-slider class="epson-u-width-100" [formControlName]="formItem?.id" [max]="formItem?.max"
+                      [min]="formItem?.min" [step]="formItem?.step" color="primary"></mat-slider>
+                  </ng-container>
+                  <!-- Input Component -->
+                  <mat-form-field *ngIf="formItem?.type === formTypes.FORM_TYPE_INPUT">
+                    <mat-label>{{formItem?.label}}</mat-label>
+                    <input matInput [formControlName]="formItem?.id">
+                  </mat-form-field>
+                  <!-- Check box component -->
+                  <mat-checkbox *ngIf="formItem?.type === formTypes.FORM_TYPE_CHECK_BOX"
+                    [formControlName]="formItem?.id" color="primary">
+                    {{formItem?.label}}</mat-checkbox>
+                </p>
+              </div>
+            </div>
+          </mat-card>
+          <!-- <div *ngFor="let item of canvasItems; let i = index" cdkDrag>
+            <mat-card>
+              <div> {{item | json}} </div>
+            </mat-card>
+          </div> -->
+        </div>
       </mat-card-content>
       <mat-card-actions>
         <mat-toolbar>
@@ -29,7 +77,8 @@
             <mat-checkbox [(ngModel)]="force" name="force">
               <span class="epson-small-font">Forced Transmission [v3.0-]</span>
             </mat-checkbox>
-            <button class="epson-center-button" type="button" mat-raised-button color="primary">Import</button>
+            <button class="epson-u-margin-horizontal" type="button" mat-raised-button color="primary"
+              (click)="onImport()">Import</button>
             <button type="button" mat-raised-button>Clear</button>
           </mat-toolbar-row>
         </mat-toolbar>

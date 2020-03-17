@@ -1,0 +1,25 @@
+<h1 mat-dialog-title style="background-color: #e0e0e0;">Import</h1>
+
+<div mat-dialog-content>
+  <p>
+    <mat-form-field class="epson-u-width-100">
+      <mat-label>Data to be import (ePOS-Print XML)</mat-label>
+      <textarea matInput cols="30" rows="10" minRows="10"
+        placeholder="&lt;epos-print xmlns=&quot;http://www.epson-pos.com/schemas/2011/03/epos-print&quot;&gt;&lt;text lang=&quot;en&quot; smooth=&quot;true&quot;&gt;Hello&lt;/text&gt;&lt;feed /&gt;&lt;/epos-print&gt;"
+        [(ngModel)]="doc"></textarea>
+    </mat-form-field>
+    <button mat-raised-button (click)="onImport()" color="primary">Apply</button>
+  </p>
+
+  <p>
+    <mat-form-field class="epson-u-width-100">
+      <mat-label>Information</mat-label>
+      <textarea cols="30" rows="8" matInput minRows="8" [(ngModel)]="info"></textarea>
+    </mat-form-field>
+  </p>
+
+</div>
+
+<mat-dialog-actions align="end">
+  <button mat-raised-button [mat-dialog-close]="true" cdkFocusInitial>Close</button>
+</mat-dialog-actions>

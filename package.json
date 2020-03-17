@@ -25,7 +25,10 @@
     "ang-jsoneditor": "file:lib/ang-jsoneditor-1.9.1.tgz",
     "jsoneditor": "^8.6.1",
     "rxjs": "~6.5.4",
+    "stream": "0.0.2",
+    "timers": "^0.1.1",
     "tslib": "^1.10.0",
+    "xml-js": "^1.6.11",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {

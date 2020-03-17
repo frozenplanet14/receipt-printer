@@ -1,5 +1,5 @@
 import { LabelValueModel, COLORS } from '../../../../print-canvas/canvas-setting-form/canvas-setting.model';
-import { FORM_TYPE_SELECT, FORM_TYPE_SLIDER, FORM_TYPE_CHECK_BOX, FORM_TYPE_INPUT } from './form-type.const';
+import { FORM_TYPE_CONST } from './form-type.const';
 
 export const LANGUAGES: LabelValueModel[] = [{
   label: 'Alphanumeric',
@@ -31,7 +31,8 @@ export const LANGUAGE_FORM_ITEM = {
   alt_text: 'text-lang',
   hasDelete: true,
   form: [{
-    type: FORM_TYPE_SELECT,
+    id: 'attr-text-lang',
+    type: FORM_TYPE_CONST.FORM_TYPE_SELECT,
     label: 'Language',
     options: LANGUAGES
   }]
@@ -67,7 +68,8 @@ export const FONT_FORM_ITEM = {
   alt_text: 'text-font',
   hasDelete: true,
   form: [{
-    type: FORM_TYPE_SELECT,
+    id: 'attr-text-font',
+    type: FORM_TYPE_CONST.FORM_TYPE_SELECT,
     label: 'Font',
     options: FONTS
   }]
@@ -79,10 +81,14 @@ export const HORIZONTAL_POSITION_FORM_ITEM = {
   alt_text: 'text-position',
   hasDelete: true,
   form: [{
-    type: FORM_TYPE_SLIDER,
+    id: 'attr-text-x',
+    type: FORM_TYPE_CONST.FORM_TYPE_SLIDER,
     label: 'X Position',
     suffix: 'dots',
-    value: 0
+    value: 0,
+    min: 1,
+    max: 2399,
+    step: 1
   }]
 };
 
@@ -93,10 +99,14 @@ export const VERTICAL_POSITION_FORM_ITEM = {
   hint: '[v3.0-]',
   hasDelete: true,
   form: [{
-    type: FORM_TYPE_SLIDER,
+    id: 'attr-text-y',
+    type: FORM_TYPE_CONST.FORM_TYPE_SLIDER,
     label: 'Y Position',
     suffix: 'dots',
-    value: 21
+    value: 21,
+    min: 1,
+    max: 2399,
+    step: 1
   }]
 };
 
@@ -106,7 +116,8 @@ export const SMOOTHING_FORM_ITEM = {
   alt_text: 'text-smooth',
   hasDelete: true,
   form: [{
-    type: FORM_TYPE_CHECK_BOX,
+    id: 'attr-text-smooth',
+    type: FORM_TYPE_CONST.FORM_TYPE_CHECK_BOX,
     label: 'Smoothing',
     value: true
   }]
@@ -118,13 +129,21 @@ export const SIZE_FORM_ITEM = {
   alt_text: 'text-size',
   hasDelete: true,
   form: [{
-    type: FORM_TYPE_SLIDER,
+    id: 'attr-text-width',
+    type: FORM_TYPE_CONST.FORM_TYPE_SLIDER,
     label: 'Width',
-    value: 1
+    value: 1,
+    min: 1,
+    max: 8,
+    step: 1
   }, {
-    type: FORM_TYPE_SLIDER,
+    id: 'attr-text-height',
+    type: FORM_TYPE_CONST.FORM_TYPE_SLIDER,
     label: 'Height',
-    value: 1
+    value: 1,
+    min: 1,
+    max: 8,
+    step: 1
   }]
 };
 
@@ -134,11 +153,13 @@ export const DOUBLE_FORM_ITEM = {
   alt_text: 'text-double',
   hasDelete: true,
   form: [{
-    type: FORM_TYPE_CHECK_BOX,
+    id: 'attr-text-dw',
+    type: FORM_TYPE_CONST.FORM_TYPE_CHECK_BOX,
     label: 'Double-width',
     value: true
   }, {
-    type: FORM_TYPE_CHECK_BOX,
+    id: 'attr-text-dh',
+    type: FORM_TYPE_CONST.FORM_TYPE_CHECK_BOX,
     label: 'Double-height',
     value: true
   }]
@@ -167,21 +188,26 @@ export const STYLE_FORM_ITEM = {
   alt_text: 'text-style',
   hasDelete: true,
   form: [{
-    type: FORM_TYPE_CHECK_BOX,
+    id: 'attr-text-reverse',
+    type: FORM_TYPE_CONST.FORM_TYPE_CHECK_BOX,
     label: 'White/Black Reverse',
     value: false,
     inline: true
   }, {
-    type: FORM_TYPE_CHECK_BOX,
+    id: 'attr-text-ul',
+    type: FORM_TYPE_CONST.FORM_TYPE_CHECK_BOX,
     label: 'Underline',
     value: false,
     inline: true
   }, {
-    type: FORM_TYPE_CHECK_BOX,
+    id: 'attr-text-em',
+    type: FORM_TYPE_CONST.FORM_TYPE_CHECK_BOX,
     label: 'Emphasized',
-    value: false
+    value: false,
+    inline: true
   }, {
-    type: FORM_TYPE_SELECT,
+    id: 'attr-text-color',
+    type: FORM_TYPE_CONST.FORM_TYPE_SELECT,
     label: 'Color',
     options: COLORS
   }]
@@ -193,7 +219,8 @@ export const TEXT_FORM_ITEM = {
   alt_text: 'text',
   hasDelete: true,
   form: [{
-    type: FORM_TYPE_INPUT,
+    id: 'attr-text-data',
+    type: FORM_TYPE_CONST.FORM_TYPE_INPUT,
     value: 'Hello\\n',
     hint: `Horizontal Tab(HT): '\t', Line Feed(LF): '\n', Carriage Return(CR): '\r', Back Slash: '\\'`
   }]
