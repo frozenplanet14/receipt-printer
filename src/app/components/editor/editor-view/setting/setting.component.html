@@ -1,0 +1,19 @@
+<div class="setting" fxLayout="column" fxLayoutAlign="space-between start" fxLayoutGap="64px">
+  <div id="setting">
+    <h3>Setting Preview</h3>
+    <mat-form-field>
+      <mat-label>Model, Paper width (Liner width)</mat-label>
+      <mat-select [(ngModel)]="settingForm.model" name="model">
+        <mat-option *ngFor="let print of printers" [value]="print.value">
+          {{print.label}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-checkbox [(ngModel)]="settingForm.status" name="status">Monitor the status</mat-checkbox>
+    <mat-checkbox [(ngModel)]="settingForm.jobid" name="jobid">Use print job ID [v4.1-]</mat-checkbox>
+  </div>
+  <span fxFlex></span>
+  <div class="setting-version">
+    ePOS-Print Editor Version 1.6.0E Copyright&copy; SEIKO EPSON CORPORATION 2012. All rights reserved.
+  </div>
+</div>

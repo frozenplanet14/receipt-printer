@@ -33,15 +33,15 @@ export function drawEan13(context, data, x, y, w, h) {
   let odd = 0;
   let even = 0;
   for (let i = 0; i < 12; i += 2) {
-    odd += parseInt(data.charAt(i));
-    even += parseInt(data.charAt(i + 1));
+    odd += Number(data.charAt(i));
+    even += Number(data.charAt(i + 1));
   }
   const cd = (220 - odd - even * 3) % 10;
 
   // check digit
   if (data.length < 13) {
     data += cd;
-  } else if (cd != parseInt(data.charAt(12))) {
+  } else if (cd !== Number(data.charAt(12))) {
     throw new Error('invalid check digit');
   }
 
@@ -52,10 +52,10 @@ export function drawEan13(context, data, x, y, w, h) {
   module += start;
 
   // append left characters
-  const parity = prefix[parseInt(data.charAt(0))];
+  const parity = prefix[Number(data.charAt(0))];
   for (let i = 1; i < 7; i++) {
-    const c = parseInt(data.charAt(i));
-    module += parseInt(parity.charAt(i - 1)) ? leftodd[c] : lefteven[c];
+    const c = Number(data.charAt(i));
+    module += Number(parity.charAt(i - 1)) ? leftodd[c] : lefteven[c];
   }
 
   // append center bar
@@ -63,7 +63,7 @@ export function drawEan13(context, data, x, y, w, h) {
 
   // append right characters
   for (let i = 7; i < 13; i++) {
-    const c = parseInt(data.charAt(i));
+    const c = Number(data.charAt(i));
     module += right[c];
   }
 
@@ -72,7 +72,7 @@ export function drawEan13(context, data, x, y, w, h) {
 
   // draw modules
   for (let i = 0; i < module.length; i++) {
-    context.fillStyle = parseInt(module.charAt(i)) ? 'black' : 'white';
+    context.fillStyle = Number(module.charAt(i)) ? 'black' : 'white';
     context.fillRect(x + i * w, y, w, h);
   }
 }

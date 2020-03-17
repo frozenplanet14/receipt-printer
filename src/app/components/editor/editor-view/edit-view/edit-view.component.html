@@ -1,0 +1,48 @@
+<div fxLayout="row">
+  <div fxFlex="25">
+    <!-- <epson-edit-menu style="width: 85%;"></epson-edit-menu> -->
+    <div cdkDropList cdkDropListSortingDisabled [cdkDropListData]="menuList" style="width: 95%;"
+      [cdkDropListConnectedTo]="['xml-editor']" (cdkDropListDropped)="drop($event)">
+      <fieldset class="edit-category" *ngFor="let menu of menuList">
+        <legend>{{menu.legend}}</legend>
+        <div *ngFor="let row of menu.items; let last = last" class="epson-form-text"
+          [ngClass]="{'epson-u-margin-bottom-1': !last}" fxLayout="row" fxLayoutAlign="space-between center">
+          <div class="edit-caption" *ngFor="let item of row" cdkDrag>
+            <img [src]="'./assets/editor/' + item.img" [alt]="item.alt_text" /><br />
+            <span>{{item.name}}</span>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+  </div>
+  <div fxFlex>
+    <mat-card class="mat-elevation-z4">
+      <mat-card-content id="xml-editor">
+        <ul class="epson-edit-sequence epson-u-width-100">
+          <li>Editor test</li>
+        </ul>
+      </mat-card-content>
+      <mat-card-actions>
+        <mat-toolbar>
+          <mat-toolbar-row>
+            <span class="epson-spacer"></span>
+            <mat-checkbox [(ngModel)]="force" name="force">
+              <span class="epson-small-font">Forced Transmission [v3.0-]</span>
+            </mat-checkbox>
+            <button class="epson-center-button" type="button" mat-raised-button color="primary">Import</button>
+            <button type="button" mat-raised-button>Clear</button>
+          </mat-toolbar-row>
+        </mat-toolbar>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
+
+<!-- <mat-grid-list class="epson-editor" cols="3" rowHeight="55em">
+  <mat-grid-tile [colspan]="1" [rowspan]="1" style="border-right: 1px solid #e0e0e0;">
+
+  </mat-grid-tile>
+  <mat-grid-tile [colspan]="2" [rowspan]="1">
+
+  </mat-grid-tile>
+</mat-grid-list> -->

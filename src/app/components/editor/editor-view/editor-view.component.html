@@ -1,0 +1,22 @@
+<mat-tab-group class="epson-editor-view">
+  <mat-tab label="Edit">
+    <epson-edit-view class="epson-u-width-100"></epson-edit-view>
+  </mat-tab>
+  <mat-tab label="Preview">
+    <epson-preview></epson-preview>
+  </mat-tab>
+  <mat-tab label="API">
+    <epson-api></epson-api>
+  </mat-tab>
+  <mat-tab label="XML">
+    <epson-xml></epson-xml>
+  </mat-tab>
+  <mat-tab label="Print">
+    <epson-print class="epson-u-width-100"></epson-print>
+  </mat-tab>
+  <mat-tab label="Setting">
+    <epson-setting></epson-setting>
+  </mat-tab>
+</mat-tab-group>
+
+<canvas [hidden]="true" id="canvas" width="1" height="1" #canvas></canvas>

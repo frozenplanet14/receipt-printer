@@ -45,5 +45,9 @@ export const APP_ROUTES: RouteLinkModel[] = [
         iconName: 'label'
       }
     ]
+  }, {
+    iconName: '',
+    displayName: 'Editor',
+    route: 'editor'
   }
 ];

@@ -1,0 +1,36 @@
+.epson-spacer {
+  flex: 1 1 auto;
+}
+
+.epson-center-button {
+  margin-left: 12px;
+  margin-right: 12px;
+}
+
+.epson-small-font {
+  font-size: small;
+  color: dimgrey;
+}
+
+.epson-u-margin-bottom-1 {
+  margin-bottom: 12px;
+}
+
+.epson-form-text {
+  @extend .epson-small-font;
+  font-size: x-small;
+  line-height: normal;
+  text-align: center;
+}
+
+.epson-edit-sequence {
+  background-color: #c0c0c0;
+  margin: 0;
+  list-style-type: none;
+  padding: 12px;
+  width: -webkit-fill-available;
+}
+
+.epson-u-margin-1 {
+  margin: 12px;
+}

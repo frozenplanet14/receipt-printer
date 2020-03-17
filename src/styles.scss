@@ -21,3 +21,18 @@ body {
 a > div.mat-list-item-content {
   width: 100%;
 }
+
+.epson-editor-view .mat-tab-body-content {
+  display: flex;
+  // margin: 16px;
+  padding: 12px;
+  border-radius: 8px;
+  height: calc(100vh - 150px);
+  // width: 90%;
+  border: 1px solid #e0e0e0;
+}
+
+.epson-editor .mat-grid-tile .mat-figure {
+  align-items: flex-start;
+  // justify-content: start;
+}

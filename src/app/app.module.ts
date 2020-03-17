@@ -3,6 +3,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -16,6 +17,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatCardModule } from '@angular/material/card';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -39,6 +42,13 @@ import { CanvasBarcodeEditFormComponent } from './components/print-canvas/canvas
 import { CanvasGraphEditFormComponent } from './components/print-canvas/canvas-graph-edit-form/canvas-graph-edit-form.component';
 import { CanvasHandDrawingFormComponent } from './components/print-canvas/canvas-hand-drawing-form/canvas-hand-drawing-form.component';
 import { CanvasLabelFormComponent } from './components/print-canvas/canvas-label-form/canvas-label-form.component';
+import { EditorViewComponent } from './components/editor/editor-view/editor-view.component';
+import { EditViewComponent } from './components/editor/editor-view/edit-view/edit-view.component';
+import { PreviewComponent } from './components/editor/editor-view/preview/preview.component';
+import { ApiComponent } from './components/editor/editor-view/api/api.component';
+import { XmlComponent } from './components/editor/editor-view/xml/xml.component';
+import { PrintComponent } from './components/editor/editor-view/print/print.component';
+import { SettingComponent } from './components/editor/editor-view/setting/setting.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +66,14 @@ import { CanvasLabelFormComponent } from './components/print-canvas/canvas-label
     CanvasBarcodeEditFormComponent,
     CanvasGraphEditFormComponent,
     CanvasHandDrawingFormComponent,
-    CanvasLabelFormComponent
+    CanvasLabelFormComponent,
+    EditorViewComponent,
+    EditViewComponent,
+    PreviewComponent,
+    ApiComponent,
+    XmlComponent,
+    PrintComponent,
+    SettingComponent
   ],
   imports: [
     BrowserModule,
@@ -70,7 +87,10 @@ import { CanvasLabelFormComponent } from './components/print-canvas/canvas-label
     MatInputModule,
     MatRadioModule,
     LayoutModule,
+    DragDropModule,
     MatToolbarModule,
+    MatTabsModule,
+    MatCardModule,
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
