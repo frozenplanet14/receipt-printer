@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { PrintClass } from './print.model';
 import { EpsonPrintingService } from 'src/app/services/epson-printing.service';
 import { MESSAGE } from '../epos-print-editor.const';
@@ -9,8 +9,9 @@ import { DocumentService } from '../../services/document.service';
   templateUrl: './print.component.html',
   styleUrls: ['./print.component.scss']
 })
-export class PrintComponent implements OnInit {
+export class PrintComponent implements OnInit, OnDestroy {
   printForm = new PrintClass();
+  epos: any;
   constructor(
     private printService: EpsonPrintingService,
     private docService: DocumentService
@@ -21,56 +22,64 @@ export class PrintComponent implements OnInit {
     this.setStatusMonitor();
   }
 
+  ngOnDestroy() {
+    this.closeConnection();
+  }
+
+  closeConnection() {
+    if (this.epos.enabled) {
+      this.epos.close();
+      this.addPrintInfo(MESSAGE.epos_close);
+    }
+  }
+
   setStatusMonitor() {
-    const epos = this.printService.printCommand();
+    this.epos = this.printService.printCommand();
     if ((this.printService.getExtraSetting() || {}).status) {
-      if (!epos.enabled) {
-        epos.open();
+      if (!this.epos.enabled) {
+        this.epos.open();
         this.addPrintInfo(MESSAGE.epos_open);
       }
     } else {
-      if (epos.enabled) {
-        epos.close();
-        this.addPrintInfo(MESSAGE.epos_close);
-      }
+      this.closeConnection();
     }
-    epos.ononline = () => {
+    this.epos.ononline = () => {
       this.addPrintInfo(MESSAGE.epos_online);
     };
-    epos.onoffline = () => {
+    this.epos.onoffline = () => {
       this.addPrintInfo(MESSAGE.epos_offline);
     };
-    epos.onpoweroff = () => {
+    this.epos.onpoweroff = () => {
       this.addPrintInfo(MESSAGE.epos_poweroff);
     };
-    epos.oncoverok = () => {
+    this.epos.oncoverok = () => {
       this.addPrintInfo(MESSAGE.epos_coverok);
     };
-    epos.oncoveropen = () => {
+    this.epos.oncoveropen = () => {
       this.addPrintInfo(MESSAGE.epos_coveropen);
     };
-    epos.onpaperok = () => {
+    this.epos.onpaperok = () => {
       this.addPrintInfo(MESSAGE.epos_paperok);
     };
-    epos.onpapernearend = () => {
+    this.epos.onpapernearend = () => {
       this.addPrintInfo(MESSAGE.epos_papernearend);
     };
-    epos.onpaperend = () => {
+    this.epos.onpaperend = () => {
       this.addPrintInfo(MESSAGE.epos_paperend);
     };
-    epos.ondrawerclosed = () => {
+    this.epos.ondrawerclosed = () => {
       this.addPrintInfo(MESSAGE.epos_drawerclosed);
     };
-    epos.ondraweropen = () => {
+    this.epos.ondraweropen = () => {
       this.addPrintInfo(MESSAGE.epos_draweropen);
     };
-    epos.onbatterylow = () => {
+    this.epos.onbatterylow = () => {
       this.addPrintInfo(MESSAGE.epos_batterylow);
     };
-    epos.onbatteryok = () => {
+    this.epos.onbatteryok = () => {
       this.addPrintInfo(MESSAGE.epos_batteryok);
     };
-    epos.onbatterystatuschange = (a) => {
+    this.epos.onbatterystatuschange = (a) => {
       if (a > 0) {
         this.addPrintInfo(MESSAGE.epos_batterystatus + ': 0x' + ('000' + a.toString(16)).slice(-4));
       }

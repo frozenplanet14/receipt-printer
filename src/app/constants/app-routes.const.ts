@@ -15,7 +15,7 @@ export const APP_ROUTES: RouteLinkModel[] = [
     iconName: 'style',
     children: [
       {
-        displayName: 'Image',
+        displayName: 'Image / PDF',
         route: 'canvas/image',
         iconName: 'image'
       },

@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
+
+export interface DimensionModel {
+  width: number;
+  height: number;
+}
 
 @Component({
   selector: 'epson-preview',
@@ -6,10 +11,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./preview.component.scss']
 })
 export class PreviewComponent implements OnInit {
+  @ViewChild('clone') clone: ElementRef;
+  @ViewChild('container', { read: ViewContainerRef }) container;
 
-  constructor() { }
+  constructor(private resolver: ComponentFactoryResolver) { }
 
   ngOnInit(): void {
+  }
+
+  cloneTemplate(dims: DimensionModel) {
+    this.container.createEmbeddedView(this.clone, { context: dims });
   }
 
 }
